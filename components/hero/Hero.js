@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber'
 // import Model from './BasementModel'
 // import { Leva } from 'leva'
 import Camera from './Camera'
-import Merged from './models/MergedModel'
+import Merged from '../models/MergedModel'
 import Image from 'next/image'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";

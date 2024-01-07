@@ -29,14 +29,14 @@ body {
 }
 
 .round-button {
-  padding: max(20px, 1.0416666667vw) max(32px, 4.9479166667vw);
-  line-height: 1.9791666667vw;
+  padding: max(20px, 1.04vw) max(32px, 4vw);
+  line-height: 1.98vw;
   font-size: max(16px, 1.25vw);
 }
 
 @media (max-width: 767px) {
   .round-button {
-    padding: max(24px, 1.25vw) max(32px, 4.6875vw);
+    padding: max(24px, 1.25vw) max(32px, 4vw);
   }
 }
 

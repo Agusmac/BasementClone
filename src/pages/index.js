@@ -1,15 +1,13 @@
 // 'use client';
 import Head from 'next/head'
-import Hero from '../../components/Hero'
-
-import Navbar from '../../components/Navbar'
+import Hero from '../../components/hero/Hero'
+import Navbar from '../../components/hero/Navbar'
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import Marquee from '../../components/Marquee'
 import Slider from '../../components/Slider'
-import PinnedText from '../../components/PinnedText'
-import RotatingModel from '../../components/RotatingModel'
-import AwardsDiv from '../../components/AwardsDiv'
+import PinnedText from '../../components/pinned/PinnedText'
+import AwardsDiv from '../../components/awards/AwardsDiv'
+import LastSlider from '../../components/LastSlider'
 // import { useScroll } from '@react-three/drei'
 
 export default function Home() {
@@ -68,6 +66,7 @@ export default function Home() {
           </div> */}
         </div>
         <AwardsDiv />
+        <LastSlider />
       </main>
     </>
   )

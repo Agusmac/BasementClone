@@ -1,6 +1,6 @@
 import React from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
-import { Awwwards } from './models/AwwwardsModel';
+import { Awwwards } from '../models/AwwwardsModel';
 import { PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 import { useControls } from "leva";

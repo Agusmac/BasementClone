@@ -159,7 +159,7 @@ export default function AwardsDiv() {
                 <RotatingModel mediumParentDiv={mediumParentDiv} screenResolution />
             </div>
             }
-            <div ref={parentDiv} className='mb-[800px] flex relative md:-top-[20vw] lg:-top-[15vw] xl:top-0 z-20'>
+            <div ref={parentDiv} className=' flex relative md:-top-[20vw] lg:-top-[15vw] xl:top-0 z-20'>
 
                 {screenResolution > 1024 &&
                     <div className='h-[22vw] w-[22vw] hidden lg:block flex-shrink-0 sticky top-[88px] sm:top-[124px] md:top-36 lg:top-[88px]'>
