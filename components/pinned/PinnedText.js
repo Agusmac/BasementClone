@@ -66,7 +66,7 @@ export default function PinnedText() {
             <div className='flex gap-[1vw] justify-end pl-5'>
               <div><p>2K22</p></div>
               <div className='h-[1px] mt-[0.95vw] w-[3.6vw] bg-[#ff4d00]'></div>
-              <div><p>There's a new beast coming out of the basement.</p></div>
+              <div><p>There&apos;s a new beast coming out of the basement.</p></div>
             </div>
           </div>
         </div>
