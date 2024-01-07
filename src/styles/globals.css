@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+html,
+body {
+  color-scheme: dark;
+  background-color: black;
+  overflow-x: clip;
+  color: #efefef;
+  /* overflow-x: hidden; */
+}
+
+/* *{
+    overflow:clip !;
+} */
+
+.font-mono {
+  font-family: "JetBrains Mono", "Menlo", "Monaco", monospace;
+}
+
+.montreal {
+  font-family: var(--font-montreal);
+}
+
+.basement {
+  font-family: var(--font-basement);
+}
+
+.round-button {
+  padding: max(20px, 1.0416666667vw) max(32px, 4.9479166667vw);
+  line-height: 1.9791666667vw;
+  font-size: max(16px, 1.25vw);
+}
+
+@media (max-width: 767px) {
+  .round-button {
+    padding: max(24px, 1.25vw) max(32px, 4.6875vw);
+  }
+}
+
+.marquee {
+  animation: marquee 90s linear infinite;
+}
+
+.marquee3 {
+  animation: marquee 90s linear infinite;
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.pinnedText {
+  font-size: max(55px, 5.2083333333vw);
+}
+
+.pinnedImagesDiv {
+
+  height: max(395px, 29.5833333333vw);
+  font-size: max(18px, 1.25vw);
+}
+
+.awards-title{
+  font-size: max(40px,4.1666vw);
+}
+
+@media (max-width: 360px) {
+  .awards-title{
+    font-size: 34px;
+  }
+}
+
+@media (min-width: 641px) {
+  .pinnedImagesDiv {
+    width: max(256px, 47.3958333333vw);
+  }
+}
+
+/* .pinnedMobileText{
+  font-size:max(18px,1.25vw)
+} */
+
+
+.animation-slide {
+  animation: moveUp 2s forwards, wait 1s forwards, moveDown 2s forwards;
+}
+
+.pinnedSticker {
+  font-size: max(16px, 1.25vw);
+}
+
+@keyframes moveUp {
+  to {
+    top: 0%;
+    /* Move to top */
+  }
+}
+
+@keyframes wait {
+  to {
+    /* Wait for 1 second */
+  }
+}
+
+@keyframes moveDown {
+  to {
+    top: -100%;
+    /* Move to -100% */
+  }
+}
