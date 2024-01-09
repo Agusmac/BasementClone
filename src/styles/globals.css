@@ -12,9 +12,6 @@ body {
   /* overflow-x: hidden; */
 }
 
-/* *{
-    overflow:clip !;
-} */
 
 .font-mono {
   font-family: "JetBrains Mono", "Menlo", "Monaco", monospace;
@@ -59,34 +56,13 @@ body {
   }
 }
 
-@keyframes marquee2 {
-  0% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(-200%);
-  }
-}
-
 .pinnedText {
   font-size: max(55px, 5.2083333333vw);
 }
 
 .pinnedImagesDiv {
-
   height: max(395px, 29.5833333333vw);
   font-size: max(18px, 1.25vw);
-}
-
-.awards-title{
-  font-size: max(40px,4.1666vw);
-}
-
-@media (max-width: 360px) {
-  .awards-title{
-    font-size: 34px;
-  }
 }
 
 @media (min-width: 641px) {
@@ -94,36 +70,62 @@ body {
     width: max(256px, 47.3958333333vw);
   }
 }
+.awards-title {
+  font-size: max(40px, 4.1666vw);
+}
 
-/* .pinnedMobileText{
-  font-size:max(18px,1.25vw)
-} */
-
-
-.animation-slide {
-  animation: moveUp 2s forwards, wait 1s forwards, moveDown 2s forwards;
+@media (max-width: 360px) {
+  .awards-title {
+    font-size: 34px;
+  }
 }
 
 .pinnedSticker {
   font-size: max(16px, 1.25vw);
 }
 
-@keyframes moveUp {
-  to {
-    top: 0%;
-    /* Move to top */
-  }
+.underlined:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+  /* top:90%; */
+  bottom: 5%;
+  background: #ff4d00;
+  height: .06em;
+  transition: transform 0.425s ease-in-out;
+  will-change: transform;
+  transform-origin: top right;
 }
 
-@keyframes wait {
-  to {
-    /* Wait for 1 second */
-  }
+.underlined:hover:before,
+.underlined:focus:before,
+.underlined:active:before {
+  transform: scaleX(1);
+  transform-origin: top left;
 }
 
-@keyframes moveDown {
-  to {
-    top: -100%;
-    /* Move to -100% */
-  }
+.underlined-white:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+  /* top:90%; */
+  bottom: 1%;
+  background: #efefef;
+  height: 2px;
+  transition: transform 0.425s ease-in-out;
+  will-change: transform;
+  transform-origin: top right;
+}
+
+.underlined-white:hover:before,
+.underlined-white:focus:before,
+.underlined-white:active:before {
+  transform: scaleX(1);
+  transform-origin: top left;
 }

@@ -1,13 +1,13 @@
 // 'use client';
 import React, { useEffect,  useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-// import Model from './BasementModel'
 // import { Leva } from 'leva'
 import Camera from './Camera'
-import Merged from '../models/MergedModel'
+// import Merged from '../models/MergedModel'
 import Image from 'next/image'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Model from '../models/BasementModel'
 
 
 
@@ -63,9 +63,9 @@ export default function Hero({ darkDivRef, testRef }) {
                 <Canvas dpr={1}>
                     <Camera />
                     <ambientLight intensity={4} />
-                    {/* <Model /> */}
+                    <Model heroRef={heroRef}/>
                     {/* IMPROVE THE MERGED MODEL, & DONT INCLUDE THE CHAIR AND THE LETTER THAT ARE ANIMATED */}
-                    <Merged heroRef={heroRef} />
+                    {/* <Merged heroRef={heroRef} /> */}
                 </Canvas>
                 :
                 <div className='mt-[15.733vw] min-h-[60vh] h-[70vh] relative'>

@@ -8,7 +8,8 @@ import Slider from '../../components/Slider'
 import PinnedText from '../../components/pinned/PinnedText'
 import AwardsDiv from '../../components/awards/AwardsDiv'
 import LastSlider from '../../components/LastSlider'
-// import { useScroll } from '@react-three/drei'
+import Footer from '../../components/Footer'
+
 
 export default function Home() {
 
@@ -67,7 +68,9 @@ export default function Home() {
         </div>
         <AwardsDiv />
         <LastSlider />
+        <Footer/>
       </main>
     </>
   )
 }
+// #000e
