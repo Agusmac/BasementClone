@@ -7,25 +7,124 @@ export default function Model({ props, heroRef }) {
     const { nodes, materials } = useGLTF("/office3.glb");
 
     const Scene = useRef()
+    const Chair = useRef()
+    const LetterTMaterial = useRef()
+
+
+    // REFACTOR ALL THIS,TIE TO END OF LOAD MODEL
+
+
+    const neonSignMaterial = useRef()
     useLayoutEffect(() => {
         // console.log("3d MODEL LOADED")
         gsap.registerPlugin(ScrollTrigger);
         const hero = heroRef.current;
-        const timeline = gsap.timeline({
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: hero,
                 start: 'top top',
                 scrub: true,
-                // end: 'bottom top',
             },
         });
 
-        timeline.to(Scene.current.position, {
+        tl.to(Scene.current.position, {
             y: '1.25',
         });
-        timeline.to(Scene.current.rotation, {
+        tl.to(Scene.current.rotation, {
             z: '0.1',
         });
+
+        const tlChair = gsap.timeline();
+        tlChair.to(Chair.current.rotation, {
+            y: '+=6', duration: 5, ease: "power1.out",
+        })
+
+        const tlNeonT = gsap.timeline({
+            repeat: -1,
+            repeatDelay: 6,
+            delay: 0.9
+        });
+        tlNeonT
+            .to(LetterTMaterial.current, {
+                opacity: '1',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '0.2',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '0.8',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '0.3',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '1',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            // ///////////
+            .to(LetterTMaterial.current, {
+                opacity: '1',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '0.2',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '0.8',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '0.3',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(LetterTMaterial.current, {
+                opacity: '1',
+                duration: 0.05,
+                ease: 'steps(3)',
+            });
+        // ////////////////////////
+        const tlNeonSign = gsap.timeline();
+        tlNeonSign
+            .to(neonSignMaterial.current, {
+                opacity: '1',
+                duration: 0.05,
+                ease: 'steps(3)',
+                delay: 1.18
+            })
+            .to(neonSignMaterial.current, {
+                opacity: '0.2',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(neonSignMaterial.current, {
+                opacity: '0.8',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(neonSignMaterial.current, {
+                opacity: '0.5',
+                duration: 0.05,
+                ease: 'steps(3)',
+            })
+            .to(neonSignMaterial.current, {
+                opacity: '1',
+                duration: 0.05,
+                ease: 'steps(3)',
+            });
     })
 
     return (
@@ -103,11 +202,14 @@ export default function Model({ props, heroRef }) {
                 <mesh
                     name="20_Basement_neon"
                     geometry={nodes["20_Basement_neon"].geometry}
-                    material={materials["20_Basement_neon"]}
+                    // material={materials["20_Basement_neon"]}
                     position={[9.75852966, 4.33562183, 3.54815674]}
                     rotation={[Math.PI / 2, 1.2e-7, Math.PI / 2]}
                     scale={[0.01022654, 0.01009216, 0.01009216]}
-                />
+                >
+                    <meshStandardMaterial ref={neonSignMaterial} color={'white'} transparent opacity={0.03} />
+                </mesh>
+
                 <mesh
                     name="19_Goku"
                     geometry={nodes["19_Goku"].geometry}
@@ -425,8 +527,10 @@ export default function Model({ props, heroRef }) {
                     position={[9.75852966, 4.33562183, 3.54815674]}
                     rotation={[Math.PI / 2, 1.2e-7, Math.PI / 2]}
                     scale={[0.01022654, 0.01009216, 0.01009216]}
-                />
-                <mesh
+                >
+                    <meshStandardMaterial ref={LetterTMaterial} color={'white'} transparent opacity={0.03} />
+                </mesh>
+                <mesh ref={Chair}
                     name="animation-chair"
                     geometry={nodes["animation-chair"].geometry}
                     material={materials["05_chair"]}

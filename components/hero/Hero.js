@@ -1,5 +1,5 @@
 // 'use client';
-import React, { useEffect,  useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 // import { Leva } from 'leva'
 import Camera from './Camera'
@@ -30,9 +30,6 @@ export default function Hero({ darkDivRef, testRef }) {
                 const hero = heroRef.current;
                 const title = titleRef.current;
                 const darkDiv = darkDivRef.current;
-                // console.log(darkDiv)
-                // const test = testRef.current;
-                // testerClass
                 const params = {
                     trigger: hero,
                     // markers: true,
@@ -41,17 +38,8 @@ export default function Hero({ darkDivRef, testRef }) {
                     scrub: true,
                 }
                 const tl = gsap.timeline({ scrollTrigger: params });
-                // const tl2 = gsap.timeline({ scrollTrigger: params });
-
                 tl.to(darkDiv, { y: '-500' })
                     .to(title, { y: '-500' }, 0)
-
-
-                // timeline.to([title, darkDiv], {
-                //     y: ['-499', '-499'],
-                // });
-                // tl.to(title, { y: '-65' })
-                // tl2.to(imager, { y: '-199' })
             }
         }
     }, [darkDivRef, testRef])
@@ -63,7 +51,7 @@ export default function Hero({ darkDivRef, testRef }) {
                 <Canvas dpr={1}>
                     <Camera />
                     <ambientLight intensity={4} />
-                    <Model heroRef={heroRef}/>
+                    <Model heroRef={heroRef} />
                     {/* IMPROVE THE MERGED MODEL, & DONT INCLUDE THE CHAIR AND THE LETTER THAT ARE ANIMATED */}
                     {/* <Merged heroRef={heroRef} /> */}
                 </Canvas>
