@@ -1,7 +1,7 @@
 // 'use client';
 import React, { useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-// import { Leva } from 'leva'
+import { Leva } from 'leva'
 import Camera from './Camera'
 // import Merged from '../models/MergedModel'
 import Image from 'next/image'
@@ -10,8 +10,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Model from '../models/BasementModel'
 
 
-
-export default function Hero({ darkDivRef, testRef }) {
+const Hero = React.memo(({ darkDivRef, testRef }) => {
+// export default function Hero({ darkDivRef, testRef }) {
 
     const [isMobile, setIsMobile] = useState(false);
     const heroRef = useRef();
@@ -46,13 +46,12 @@ export default function Hero({ darkDivRef, testRef }) {
 
     return (
         <div id='#hero' ref={heroRef} className='relative z-10 w-full h-[92vh] sm:h-screen bg-black '>
-            {/* <Leva collapsed /> */}
+            <Leva collapsed />
             {!isMobile ?
                 <Canvas dpr={1}>
                     <Camera />
                     <ambientLight intensity={4} />
                     <Model heroRef={heroRef} />
-                    {/* IMPROVE THE MERGED MODEL, & DONT INCLUDE THE CHAIR AND THE LETTER THAT ARE ANIMATED */}
                     {/* <Merged heroRef={heroRef} /> */}
                 </Canvas>
                 :
@@ -80,5 +79,6 @@ export default function Hero({ darkDivRef, testRef }) {
             </div>
         </div>
     )
-}
+})
+export default Hero;
 {/* <Image className='' src={'/title.webp'} fill sizes='100vw' quality={100} /> */ }

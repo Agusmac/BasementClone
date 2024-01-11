@@ -2,23 +2,26 @@
 import Head from 'next/head'
 import Hero from '../../components/hero/Hero'
 import Navbar from '../../components/hero/Navbar'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Marquee from '../../components/Marquee'
 import Slider from '../../components/Slider'
 import PinnedText from '../../components/pinned/PinnedText'
 import AwardsDiv from '../../components/awards/AwardsDiv'
 import LastSlider from '../../components/LastSlider'
 import Footer from '../../components/Footer'
+import { gsap } from "gsap/dist/gsap";
+import Image from 'next/image'
 
 
 export default function Home() {
 
   const darkDivRef = useRef()
   const testRef = useRef()
-
+  const [awardVisible, setAwardVisible] = useState(false)
+  // const [crossVisible, setcrossVisible] = useState(false)
 
   useEffect(() => {
-    // scroll is already quite smooth on mobile, probably should check for window size and remove this if mobile
+    //  probably should check for window size and remove this if mobile
     (
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll')).default
@@ -26,6 +29,33 @@ export default function Home() {
       }
     )()
   }, [])
+
+  useEffect(() => {
+    let start = true;
+    gsap.set(".award", { xPercent: -50, yPercent: -50 });
+    let xAwardSetter = gsap.quickTo(".award", "x", { duration: 0.4, ease: "power3.out" })
+    let yAwardSetter = gsap.quickTo(".award", "y", { duration: 0.4, ease: "power3.out" })
+
+    gsap.set(".follower", { xPercent: -50, yPercent: -50 });
+    let xSetter = gsap.quickSetter(".follower", "x", "px",)
+    let ySetter = gsap.quickSetter(".follower", "y", "px",)
+
+    window.addEventListener("mousemove", e => {
+      xAwardSetter(e.x)
+      yAwardSetter(e.y)
+      xSetter(e.x)
+      ySetter(e.y)
+      if (start) {
+        gsap.to('.crosshair', {
+          opacity: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+        })
+        start = false
+      }
+    });
+
+  }, []);
 
 
   return (
@@ -37,6 +67,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        {/* opacity-0 ${crossVisible && "opacity-100"} duration-75 delay-75 */}
+        <div className={`follower mix-blend-difference`}>
+          <Image priority className={`crosshair z-50 relative opacity-0`} src={`/crosshair.svg`} alt='titleImg' width={66} height={66} quality={100} />
+          <div className='absolute inset-0 grid place-content-center'><div className='crosshair-dot h-1 w-1'></div></div>
+        </div>
+        <div className={`award  grid place-content-center`}>
+          <div className={`opacity-0  ${awardVisible && "opacity-100"} duration-300 ease-in-out`}>
+            <Image className=' max-w-[15vw]' src={`/awards/1676293988-certificate-basement-foundry-sotd-1-1.jpg`} alt='titleImg' width={512} height={679} quality={100} />
+          </div>
+        </div>
+
         <Navbar />
 
         <Hero darkDivRef={darkDivRef} testRef={testRef} />
@@ -66,9 +107,9 @@ export default function Home() {
             <video className='h-56 w-full' loop="" src="blob:https://basement.studio/b3c9eb37-7068-4759-a9d3-71fbd88b36ad"/>
           </div> */}
         </div>
-        <AwardsDiv />
+        <AwardsDiv setAwardVisible={setAwardVisible} />
         <LastSlider />
-        <Footer/>
+        <Footer />
       </main>
     </>
   )

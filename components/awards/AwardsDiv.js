@@ -142,7 +142,7 @@ const awardsData = [
     },
 ]
 // const test = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-export default function AwardsDiv() {
+export default function AwardsDiv({ setAwardVisible }) {
 
     const parentDiv = useRef();
     const mediumParentDiv = useRef();
@@ -151,13 +151,14 @@ export default function AwardsDiv() {
         setscreenResolution(window.innerWidth)
     }, [])
 
+
     return (
         <>
-                    {/* lg:hidden */}
-            {screenResolution > 641 && screenResolution < 1025 && 
-            <div ref={mediumParentDiv} className='h-[22vw] w-[22vw] mx-auto  lg:hidden relative md:-top-[20vw] lg:-top-[15vw] z-20 xl:top-0'>
-                <RotatingModel mediumParentDiv={mediumParentDiv} screenResolution />
-            </div>
+            {/* lg:hidden */}
+            {screenResolution > 641 && screenResolution < 1025 &&
+                <div ref={mediumParentDiv} className='h-[22vw] w-[22vw] mx-auto  lg:hidden relative md:-top-[20vw] lg:-top-[15vw] z-20 xl:top-0'>
+                    <RotatingModel mediumParentDiv={mediumParentDiv} screenResolution />
+                </div>
             }
             <div ref={parentDiv} className=' flex relative md:-top-[20vw] lg:-top-[15vw] xl:top-0 z-20'>
 
@@ -173,9 +174,11 @@ export default function AwardsDiv() {
                         <h2 className='basement awards-title leading-none'>AWARDS</h2>
                         <p className='text-xl sm:text-2xl sm:text-right'>(RECOGNITIONS)</p>
                     </div>
-                    <div className='lg:pr-[max(16px,1.5625vw)] w-full '>
+
+
+                    <div onMouseEnter={() => setAwardVisible(true)} onMouseLeave={() => setAwardVisible(false)} className='lg:pr-[max(16px,1.5625vw)] w-full '>
                         {awardsData.map((item, i) => (
-                            <div key={i} className={`flex relative box-content mt-[-1px] hover:z-10 items-center border-t border-b border-[#787878] text-[#787878] hover:border-[#efefef] hover:text-[#efefef] py-[.9375vw]`}>
+                            <div key={i} className={`flex hover-div relative box-content mt-[-1px] hover:z-10 items-center border-t border-b border-[#787878] text-[#787878] hover:border-[#efefef] hover:text-[#efefef] py-[.9375vw]`}>
                                 <p className='text-[max(16px,1.875vw)] flex-1'>{item.title}</p>
                                 <div className='flex-1 flex items-center text-end lg:text-start justify-end lg:justify-start text-[max(16px,1.25vw)]'>
                                     <div className='flex-1 uppercase lg:normal-case'>{item.client}</div>

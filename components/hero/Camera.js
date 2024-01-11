@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { PerspectiveCamera } from '@react-three/drei'
 import { useFrame} from '@react-three/fiber';
 
@@ -20,7 +20,7 @@ export default function Camera() {
         y: 0
     }
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         window.addEventListener('mousemove', (event) => {
             cursor.x = event.clientX / sizes.width - 0.5
             cursor.y = event.clientY / sizes.height - 0.5
@@ -29,7 +29,6 @@ export default function Camera() {
 
 
     useFrame(() => {
-
         const cameraTargetPositionZ = (cursor.x * 0.1) + 1.383
         const cameraTargetPositionY = (cursor.y * 0.2) + 2.1
         // this makes the position Y change a bit more, 
@@ -53,7 +52,7 @@ export default function Camera() {
         // // Update the camera position
         camera.current.position.z += easedPositionZ;
         camera.current.position.y += easedPositionY;
-    });
+    },[]);
 
 
     return (

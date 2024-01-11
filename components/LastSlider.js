@@ -74,7 +74,7 @@ export default function LastSlider() {
                 <p className='text-[max(26px,1.66vw)] lg:max-w-[41.66vw] mb-12 tracking-[-.02em] leading-[1.19]'>
                     Our studio is only as special as the people that comprise it: designers, developers, and creatives driven by the desire to build non-standard & meaningful experiences.
                 </p>
-                <div className='hidden cursor-pointer sm:block backdrop-blur-sm mb-10 round-button uppercase bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border-2 border-[#efefef]'>
+                <div className='hidden hover-div sm:block backdrop-blur-sm mb-10 round-button uppercase bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border-2 border-[#efefef]'>
                     <p className=''><span className="text-[#ff4d00] mr-5">→</span>The peeps</p>
                 </div>
             </div>
@@ -110,9 +110,10 @@ export default function LastSlider() {
                     {[1, 2, 3, 4].map((item, index) => {
                         const imgString = item === 1 ? `slider-img-1.jpg` : `slider-img-${item}.webp`
                         return (
-                            <div key={index} onClick={() => changeImg(`${imgString}`)} className='flex-1 '>
+                            <div key={index} onClick={() => changeImg(`${imgString}`)} className='flex-1 hover-div'>
                                 <p>00{item}</p>
-                                <div className={`relative ${sliderImg !== imgString && 'cursor-pointer'} group `}>
+                                {/* ${sliderImg !== imgString && 'cursor-pointer'} */}
+                                <div className={`relative  group `}>
                                     <Image className='group-hover:brightness-125 duration-300 w-[96px] h-[64px]' src={`/last-slider/${imgString}`} alt='titleImg' width={96} height={64} />
                                     <div className={`absolute inset-0 duration-200 w-full h-full object-cover ${sliderImg === imgString && 'bg-[#ff4d00]'}`}></div>
                                 </div>

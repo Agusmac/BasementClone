@@ -14,7 +14,7 @@ export default function Navbar() {
                     <Image alt='illustration' className='max-w-[4.79vw] h-auto' src={'/header-logo.svg'} width={92} height={50} quality={100} />
                     <p className='relative '>2019</p>
                 </div>
-                <div className='flex items-center justify-end leading-[1.19] gap-[10px] text-base sm:text-[4.266vw] md:text-[2.58vw] lg:text-[0.833vw] group '>
+                <div className='flex hover-div items-center justify-end leading-[1.19] gap-[10px] text-base sm:text-[4.266vw] md:text-[2.58vw] lg:text-[0.833vw] group '>
                     <p className='group-hover:text-[red] relative lg:-top-[6px] lg:self-end font-normal'>Menu</p>
                     <Image alt='menu' className='fill-[red] group-hover:fill-[red] lg:max-w-[32px] xl:max-w-[37px] h-auto' src={'/menu.svg'} width={37.3} height={37.3} quality={100} />
                 </div>

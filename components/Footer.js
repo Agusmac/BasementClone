@@ -17,7 +17,7 @@ export default function Footer() {
 
                 <h2 className='text-[max(40px,7.9vw)] basement leading-[86%] tracking-[-.03em] relative z-10 whitespace-nowrap'>
                     Any <br /> project <br /> in mind?<br />
-                    <span className='text-[#ff4d00] underlined relative max-w-max whitespace-normal'>Get in touch</span>
+                    <span className='text-[#ff4d00] underlined relative max-w-max whitespace-normal hover-div'>Get in touch</span>
                 </h2>
                 <img className='absolute w-[93vw] left-[30vw] hidden md:block' src="/footer-img-1.svg" alt="" />
                 <img className='w-[max(375px,217.333vw)] relative max-w-none mt-[-20.833vw] left-0 md:hidden' src="/footer-img-mobile.svg" alt="" />
@@ -28,17 +28,17 @@ export default function Footer() {
             <div className='flex justify-between flex-col sm:flex-row gap-10 leading-[1.2] pt-[max(16px,2.0833333333vw)] text-[max(16px,1.25vw)]'>
                 <div className="flex-1">
                     <p>Social Media</p>
-                    <a className='relative underlined-white'>Twitter</a>
+                    <a className='relative underlined-white hover-div'>Twitter</a>
                     <span> — </span>
-                    <a className='relative underlined-white'>Instagram</a>
+                    <a className='relative underlined-white hover-div'>Instagram</a>
                     <span> — </span>
-                    <a className='relative underlined-white'>GITHUB</a>
+                    <a className='relative underlined-white hover-div'>GITHUB</a>
                     <span> — </span>
-                    <a className='relative underlined-white'>Twitch</a>
+                    <a className='relative underlined-white hover-div'>Twitch</a>
                 </div>
                 <div className="">
                     <p className=''>Get in touch</p>
-                    <p className='relative underlined-white'>hello@basement.studio</p>
+                    <p className='relative underlined-white hover-div'>hello@basement.studio</p>
                 </div>
                 <div className="flex-1 text-end hidden md:block">
                     <p className=''>© basement.studio LLC 2024</p>

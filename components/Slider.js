@@ -85,7 +85,7 @@ export default function Slider() {
                 </div>
 
 
-                <div className='hidden cursor-pointer sm:block absolute backdrop-blur-sm -right-5 bottom-1/2 mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border-2 border-[#efefef]'>
+                <div className='hidden hover-div sm:block absolute backdrop-blur-sm -right-5 bottom-1/2 mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border-2 border-[#efefef]'>
                     <p className=''><span className="text-[#ff4d00] mr-5">→</span>ABOUT US</p>
                 </div>
 
@@ -95,9 +95,10 @@ export default function Slider() {
                     {[1, 2, 3, 4, 5].map((item, index) => {
                         const imgString = item === 1 ? `slider-img-1.jpg` : `slider-img-${item}.webp`
                         return (
-                            <div key={index} onClick={() => changeImg(`${imgString}`)} className='flex-1 '>
+                            <div key={index} onClick={() => changeImg(`${imgString}`)} className='flex-1 hover-div'>
                                 <p>00{item}</p>
-                                <div className={`relative ${sliderImg !== imgString && 'cursor-pointer'} group`}>
+                                {/* ${sliderImg !== imgString && ''}*/}
+                                <div className={`relative  group`}>
                                     <Image className='group-hover:brightness-125 duration-300' src={`/slider-1/${imgString}`} alt='titleImg' width={96} height={64} />
                                     <div className={`absolute inset-0 duration-200 ${sliderImg === imgString && 'bg-[#ff4d00]'}`}></div>
                                 </div>

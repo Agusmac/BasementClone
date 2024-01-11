@@ -9,9 +9,35 @@ body {
   background-color: black;
   overflow-x: clip;
   color: #efefef;
+  cursor: none;
   /* overflow-x: hidden; */
 }
 
+.follower {
+  width: 66px;
+  height: 66px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.award{
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.crosshair-dot {
+  background-color: transparent;
+}
+
+body:has(.hover-div:hover) .crosshair-dot {
+  background-color: white !important;
+}
 
 .font-mono {
   font-family: "JetBrains Mono", "Menlo", "Monaco", monospace;
@@ -70,6 +96,7 @@ body {
     width: max(256px, 47.3958333333vw);
   }
 }
+
 .awards-title {
   font-size: max(40px, 4.1666vw);
 }
