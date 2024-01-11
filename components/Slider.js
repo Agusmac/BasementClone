@@ -13,9 +13,19 @@ export default function Slider() {
 
     const [sliderImg, setSliderImg] = useState('slider-img-1.jpg')
     const [startSlide, setStartSlide] = useState(0)
+    const [abstractImg, setAbstractImg] = useState(1)
 
     function changeImg(img) {
+
         if (sliderImg !== img && startSlide === 0) {
+            for (let j = 0; j < 3; j++) {
+                for (let i = 1; i <= 11; i++) {
+                    setTimeout(() => {
+                        console.log(i)
+                        setAbstractImg(i);
+                    }, 75 * (i + j * 10)); 
+                }
+            }
             setStartSlide(1);
 
             setTimeout(() => {
@@ -23,14 +33,15 @@ export default function Slider() {
 
                 setTimeout(() => {
                     setStartSlide(2);
-                }, 200);
-                setTimeout(() => {
-                    setStartSlide(0)
-                }, 400);
+                }, 200 * 4); 
 
+                setTimeout(() => {
+                    setStartSlide(0);
+                }, 200 * 5); 
             }, 1000);
         }
     }
+
 
     useLayoutEffect(() => {
         const isMobile = window.innerWidth <= 641;
@@ -74,18 +85,22 @@ export default function Slider() {
                 for startups and companies, bringing what they envision to life through:
                 branding, visual design & development of the highest quality.
             </h2>
-            <div className='sm:hidden mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border border-[#efefef] '>
+            <div className='sm:hidden mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border border-[#efefef] hover:border-[#ff4d00]'>
                 <p className=''><span className="text-[#ff4d00] mr-2">→</span>ABOUT US</p>
             </div>
 
             <div className='sm:w-[64vw] relative'>
                 <div className='relative sm:w-[64vw] min-h-[393px] h-[42.6vw] overflow-hidden grid place-content-center'>
                     <Image ref={imageRef} priority className='scale-[1.20] absolute object-cover w-full h-full inset-0 sm:top-20 ' src={`/slider-1/${sliderImg}`} alt='titleImg' width={2454 / 2} height={1632 / 2} quality={100} />
-                    <div className={`absolute inset-0 ${startSlide !== 0 && 'duration-300'} ease-[cubic-bezier(0.165,0.84,0.44,1)]  bg-[#ff4d00] ${startSlide === 2 ? '-top-full bottom-full' : startSlide === 1 ? 'top-0' : 'top-full'}`}></div>
+                    <div className={`absolute inset-0 grid place-content-center ${startSlide !== 0 && 'duration-300'} ease-[cubic-bezier(0.165,0.84,0.44,1)]  bg-[#ff4d00] ${startSlide === 2 ? '-top-full bottom-full' : startSlide === 1 ? 'top-0' : 'top-full'}`}>
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
+                            <img key={item} className={`abstractImg absolute inset-0 w-full h-full ${abstractImg !==item && "hidden" }`} src={`/abstract/${item}.svg`} alt="" />
+                        ))}
+                    </div>
                 </div>
 
 
-                <div className='hidden hover-div sm:block absolute backdrop-blur-sm -right-5 bottom-1/2 mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border-2 border-[#efefef]'>
+                <div className='hidden hover-div sm:block absolute backdrop-blur-sm -right-5 bottom-1/2 mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border-2 border-[#efefef] hover:border-[#ff4d00]'>
                     <p className=''><span className="text-[#ff4d00] mr-5">→</span>ABOUT US</p>
                 </div>
 

@@ -67,45 +67,33 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* opacity-0 ${crossVisible && "opacity-100"} duration-75 delay-75 */}
-        <div className={`follower mix-blend-difference`}>
-          <Image priority className={`crosshair z-50 relative opacity-0`} src={`/crosshair.svg`} alt='titleImg' width={66} height={66} quality={100} />
+
+        <div className="follower mix-blend-difference">
+          <Image priority className="crosshair z-50 relative opacity-0" src="/crosshair.svg" alt='titleImg' width={66} height={66} quality={100} />
           <div className='absolute inset-0 grid place-content-center'><div className='crosshair-dot h-1 w-1'></div></div>
         </div>
-        <div className={`award  grid place-content-center`}>
+        <div className="award grid place-content-center">
           <div className={`opacity-0  ${awardVisible && "opacity-100"} duration-300 ease-in-out`}>
             <Image className=' max-w-[15vw]' src={`/awards/1676293988-certificate-basement-foundry-sotd-1-1.jpg`} alt='titleImg' width={512} height={679} quality={100} />
           </div>
         </div>
 
         <Navbar />
-
         <Hero darkDivRef={darkDivRef} testRef={testRef} />
 
         <div className='bg-black relative pt-2 z-20'>
-
           <div ref={darkDivRef} className='pt-16 sm:pt-[114px] bg-black'>
             <p className='text-white uppercase mx-auto text-center text-xs sm:text-xl font-medium px-4'>
               Sometimes size doesn&apos;t matter. we work for BIG &
               <br className='sm:hidden' /> SMALL NON-stoppable visionarIES.
               <br /> There&apos;s love for them all.
             </p>
-            <div className='relative' >
-              <Marquee />
-            </div>
-
+            <Marquee />
             <Slider />
-
-            {/* <div className='bg-[#ff5e00] h-[2000px]'></div> */}
           </div>
-
           <div className='relative sm:-top-80 md:-top-96 xl:-top-64 '>
             <PinnedText />
           </div>
-          {/* <div className=''>
-            <Image priority className='mx-auto ' src={`/slider-1/slider-img-1.jpg`} alt='titleImg' width={2454 / 2} height={1632 / 2} quality={100} />
-            <video className='h-56 w-full' loop="" src="blob:https://basement.studio/b3c9eb37-7068-4759-a9d3-71fbd88b36ad"/>
-          </div> */}
         </div>
         <AwardsDiv setAwardVisible={setAwardVisible} />
         <LastSlider />

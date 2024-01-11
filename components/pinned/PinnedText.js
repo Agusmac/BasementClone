@@ -71,10 +71,10 @@ export default function PinnedText() {
           </div>
         </div>
 
-        <PinnedImageDiv client={'Mr Beast'} type={'E-Commerce'} img={'mrbeast-img.jpg'} p={`There's a new beast coming out of the basement.`} />
-        <PinnedImageDiv client={'VERCEL'} type={'BRANDING'} img={'vercel.jpg'} translateXLeft p={`Let's dive into how our expertise played a key role in contributing to Vercel wins, driving brand growth worldwide.`} />
-        <PinnedImageDiv client={'RANBOO'} type={'E-Commerce'} img={'ranboo.jpeg'} p={`Reimaging the shopping experience for one of the cool kids and taking it to a whole new level.`} />
-        <PinnedImageDiv client={'DYNABOARD'} type={'WEBSITE'} img={'dynaboard.jpg'} translateXLeft p={`Ushering in the new face of collaborative development with an exceptional web presence.`} />
+        <PinnedImageDiv client={'Mr Beast'} type={'E-Commerce'} img={'mrbeast-img.jpg'} video={'mrbeast-video.mp4'} p={`There's a new beast coming out of the basement.`} />
+        <PinnedImageDiv client={'VERCEL'} type={'BRANDING'} img={'vercel.jpg'} video={'vercel.mp4'} translateXLeft p={`Let's dive into how our expertise played a key role in contributing to Vercel wins, driving brand growth worldwide.`} />
+        <PinnedImageDiv client={'RANBOO'} type={'E-Commerce'} img={'ranboo.jpeg'} video={'ranboo.mp4'} p={`Reimaging the shopping experience for one of the cool kids and taking it to a whole new level.`} />
+        <PinnedImageDiv client={'DYNABOARD'} type={'WEBSITE'} img={'dynaboard.jpg'} video={'dynaboard.mp4'} translateXLeft p={`Ushering in the new face of collaborative development with an exceptional web presence.`} />
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Model from '../models/BasementModel'
 
-
+// updating the awardsVisible state re rendered this for some reason => so memoed
 const Hero = React.memo(({ darkDivRef, testRef }) => {
 // export default function Hero({ darkDivRef, testRef }) {
 
@@ -20,9 +20,6 @@ const Hero = React.memo(({ darkDivRef, testRef }) => {
     useEffect(() => {
         if (window.innerWidth < 641) setIsMobile(true)
     }, [])
-    // MAYBE I COULD TAKE THIS TO THE MERGED MODEL AND DO EVERYTHING THERE
-    // OR CREATE A STATE HERE, PASS THE SETTER TO THE MODEL AND GET THE REFERENCE TO DO EVERYTHING HERE
-
     useEffect(() => {
         if (darkDivRef.current) {
             if (window.innerWidth > 641) {
@@ -52,7 +49,6 @@ const Hero = React.memo(({ darkDivRef, testRef }) => {
                     <Camera />
                     <ambientLight intensity={4} />
                     <Model heroRef={heroRef} />
-                    {/* <Merged heroRef={heroRef} /> */}
                 </Canvas>
                 :
                 <div className='mt-[15.733vw] min-h-[60vh] h-[70vh] relative'>
@@ -62,14 +58,14 @@ const Hero = React.memo(({ darkDivRef, testRef }) => {
 
             <div className='text-[#efefef] hidden lg:flex absolute top-20 pt-1 w-full  justify-between items-center text1 tracking-[-0.04em]  text-[1.6666666667vw] px-[30px]'>
                 <div className=''>A digital studio making cool shit that performs.</div>
-                <div className=''>Any project in mind? <span> Drop us a line.</span></div>
+                <div className=''>Any project in mind? <span className='underlined-white'> Drop us a line.</span></div>
             </div>
             <div ref={titleRef} className='absolute inset-[1.0416666667vw] mx-auto top-auto px-4'>
                 <Image priority className='hidden sm:block' src={'/title.webp'} alt='titleImg' width={3802 / 2} height={384 / 2} quality={100} />
                 <Image priority className='sm:hidden' src={'/title-mobile.webp'} alt='titleImg' width={724} height={96} quality={100} />
                 <p className='sm:hidden text-xl mt-2'>A digital studio making cool shit that performs</p>
 
-                <div className='lg:hidden mt-12 mb-1 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border border-[#efefef] '>
+                <div className='lg:hidden mt-12 mb-1 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border border-[#efefef] hover:border-[#ff4d00]'>
                     <p className=''>
                         <span className="text-[#ff4d00] mr-2">→</span>
                         CONTACT US
@@ -80,5 +76,7 @@ const Hero = React.memo(({ darkDivRef, testRef }) => {
         </div>
     )
 })
+
+Hero.displayName = 'Hero'; 
 export default Hero;
 {/* <Image className='' src={'/title.webp'} fill sizes='100vw' quality={100} /> */ }
