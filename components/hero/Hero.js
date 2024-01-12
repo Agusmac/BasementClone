@@ -43,7 +43,7 @@ const Hero = React.memo(({ darkDivRef, testRef }) => {
 
     return (
         <div id='#hero' ref={heroRef} className='relative z-10 w-full h-[92vh] sm:h-screen bg-black '>
-            <Leva collapsed />
+            {/* <Leva collapsed /> */}
             {!isMobile ?
                 <Canvas dpr={1}>
                     <Camera />

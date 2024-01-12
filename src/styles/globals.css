@@ -10,6 +10,7 @@ body {
   overflow-x: clip;
   color: #efefef;
   cursor: none;
+
   /* overflow-x: hidden; */
 }
 
@@ -23,7 +24,7 @@ body {
   z-index: 9999;
 }
 
-.award{
+.award {
   position: fixed;
   top: 0;
   left: 0;
@@ -91,6 +92,19 @@ body:has(.hover-div:hover) .crosshair-dot {
   font-size: max(18px, 1.25vw);
 }
 
+/* :root,
+  html,
+  body {
+    cursor: auto !important;
+  } */
+
+  @media (max-width: 641px) {
+    :root,
+  html,
+  body {
+    cursor: auto !important;
+  }
+  }
 @media (min-width: 641px) {
   .pinnedImagesDiv {
     width: max(256px, 47.3958333333vw);
@@ -155,4 +169,8 @@ body:has(.hover-div:hover) .crosshair-dot {
 .underlined-white:active:before {
   transform: scaleX(1);
   transform-origin: top left;
+}
+
+.removePointerEvents{
+  pointer-events: none !important;
 }

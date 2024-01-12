@@ -11,6 +11,7 @@ import LastSlider from '../../components/LastSlider'
 import Footer from '../../components/Footer'
 import { gsap } from "gsap/dist/gsap";
 import Image from 'next/image'
+import Scenario from '../../components/Scenario'
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
   const darkDivRef = useRef()
   const testRef = useRef()
   const [awardVisible, setAwardVisible] = useState(false)
+  const [currentAward, setCurrentAward] = useState(1)
   // const [crossVisible, setcrossVisible] = useState(false)
 
   useEffect(() => {
@@ -31,29 +33,33 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    let start = true;
-    gsap.set(".award", { xPercent: -50, yPercent: -50 });
-    let xAwardSetter = gsap.quickTo(".award", "x", { duration: 0.4, ease: "power3.out" })
-    let yAwardSetter = gsap.quickTo(".award", "y", { duration: 0.4, ease: "power3.out" })
 
-    gsap.set(".follower", { xPercent: -50, yPercent: -50 });
-    let xSetter = gsap.quickSetter(".follower", "x", "px",)
-    let ySetter = gsap.quickSetter(".follower", "y", "px",)
+    if (window.innerWidth > 641) {
 
-    window.addEventListener("mousemove", e => {
-      xAwardSetter(e.x)
-      yAwardSetter(e.y)
-      xSetter(e.x)
-      ySetter(e.y)
-      if (start) {
-        gsap.to('.crosshair', {
-          opacity: 1,
-          duration: 0.5,
-          ease: 'power2.out',
-        })
-        start = false
-      }
-    });
+      let start = true;
+      gsap.set(".award", { xPercent: -50, yPercent: -50 });
+      let xAwardSetter = gsap.quickTo(".award", "x", { duration: 0.4, ease: "power3.out" })
+      let yAwardSetter = gsap.quickTo(".award", "y", { duration: 0.4, ease: "power3.out" })
+
+      gsap.set(".follower", { xPercent: -50, yPercent: -50 });
+      let xSetter = gsap.quickSetter(".follower", "x", "px",)
+      let ySetter = gsap.quickSetter(".follower", "y", "px",)
+
+      window.addEventListener("mousemove", e => {
+        xAwardSetter(e.x)
+        yAwardSetter(e.y)
+        xSetter(e.x)
+        ySetter(e.y)
+        if (start) {
+          gsap.to('.crosshair', {
+            opacity: 1,
+            duration: 0.5,
+            ease: 'power2.out',
+          })
+          start = false
+        }
+      });
+    }
 
   }, []);
 
@@ -68,15 +74,24 @@ export default function Home() {
       </Head>
       <main>
 
-        <div className="follower mix-blend-difference">
-          <Image priority className="crosshair z-50 relative opacity-0" src="/crosshair.svg" alt='titleImg' width={66} height={66} quality={100} />
-          <div className='absolute inset-0 grid place-content-center'><div className='crosshair-dot h-1 w-1'></div></div>
-        </div>
-        <div className="award grid place-content-center">
-          <div className={`opacity-0  ${awardVisible && "opacity-100"} duration-300 ease-in-out`}>
-            <Image className=' max-w-[15vw]' src={`/awards/1676293988-certificate-basement-foundry-sotd-1-1.jpg`} alt='titleImg' width={512} height={679} quality={100} />
+        {/* PROBABLY move to a component, and add a res check */}
+        {/* {window.innerWidth < 641 && */}
+        <div className='hidden sm:block'>
+          <div className="follower mix-blend-difference">
+            <Image priority className="crosshair z-50 relative opacity-0" src="/crosshair.svg" alt='titleImg' width={66} height={66} quality={100} />
+            <div className='absolute inset-0 grid place-content-center'><div className='crosshair-dot h-1 w-1'></div></div>
+          </div>
+          <div className="award grid place-content-center">
+            <div className={`opacity-0 ${awardVisible && "opacity-100"} duration-300 ease-in-out`}>
+              {/* <Image className=' max-w-[15vw]' src={`/awards/1676293988-certificate-basement-foundry-sotd-1-1.jpg`} alt='titleImg' width={512} height={679} quality={100} /> */}
+              <div className='w-[35vw] h-[35vw] lg:w-[20vw] lg:h-[20vw]'>
+                <Scenario currentAward={currentAward}/>
+              </div>
+            </div>
           </div>
         </div>
+        {/* } */}
+
 
         <Navbar />
         <Hero darkDivRef={darkDivRef} testRef={testRef} />
@@ -95,7 +110,7 @@ export default function Home() {
             <PinnedText />
           </div>
         </div>
-        <AwardsDiv setAwardVisible={setAwardVisible} />
+        <AwardsDiv setAwardVisible={setAwardVisible} setCurrentAward={setCurrentAward}/>
         <LastSlider />
         <Footer />
       </main>
