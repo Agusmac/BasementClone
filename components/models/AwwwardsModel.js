@@ -1,11 +1,8 @@
 
 import React, { useLayoutEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useControls } from "leva";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useThree } from "@react-three/fiber";
-import * as THREE from 'three';
 
 export function Awwwards({ props, parentDiv, mediumParentDiv }) {
 
@@ -83,55 +80,13 @@ export function Awwwards({ props, parentDiv, mediumParentDiv }) {
   },[])
 
 
-  const { positionX } = useControls('cube', {
-    positionX: { value: 0, step: 0.01, min: -10, max: 10 }
-  })
-  const { positionY } = useControls('cube', {
-    // -0.04
-    positionY: { value: -0.1, step: 0.00001, min: -2, max: 2 }
-  })
-  const { positionZ } = useControls('cube', {
-    positionZ: { value: window.innerWidth > 1024 ? 4.0 : 3.94, step: 0.0001, min: -10, max: 10 }
-  })
-
-  const { rotationX } = useControls('cube', {
-    rotationX: { value: 0.4, step: 0.001, min: -2, max: 2 }
-  })
-  const { rotationY } = useControls('cube', {
-    rotationY: { value: 0.5, step: 0.001, min: 0, max: 2 }
-  })
-  const { rotationZ } = useControls('cube', {
-    rotationZ: { value: 0, step: 0.001, min: -2, max: 2 }
-  })
-  const { scaleY } = useControls('cube', {
-    scaleY: { value: window.innerWidth > 1024 ? 0.8 : 1, step: 0.1, min: 0, max: 10 }
-  })
-  const { cameraY } = useControls('cube', {
-    cameraY: { value: 0, step: 0.1, min: -2, max: 2 }
-  })
-
-
   const { nodes, materials } = useGLTF("/Awwwards.glb");
-
-  // useThree(({ camera }) => {
-  //   if (model.current) {
-  //     camera.
-  //     console.log(camera)
-  //     camera.fov=5
-  //     // camera.lookAt(0, 0, 0)
-  //     // camera.position.y = cameraY
-  //     // console.log(camera)
-  //   }
-
-  // });
-
-
 
   return (
     <group  {...props} dispose={null}>
-      <group ref={model} position={[positionX, positionY, positionZ]}
-        rotation={[rotationX, rotationY, rotationZ]}
-        scale-y={scaleY}>
+      <group ref={model} position={[0, -0.1, window.innerWidth > 1024 ? 4.0 : 3.94]}
+        rotation={[0.4, 0.5, 0]}
+        scale-y={window.innerWidth > 1024 ? 0.8 : 1}>
         <mesh
           geometry={nodes.Cube001.geometry}
           material={materials.m_Trophy3}

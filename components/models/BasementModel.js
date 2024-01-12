@@ -1,17 +1,24 @@
-import React, { useLayoutEffect, useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
+import { useGLTF, useProgress } from "@react-three/drei";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-export default function Model({ props, heroRef }) {
+export default function Model({ props, heroRef, setHeroModelReady }) {
     const { nodes, materials } = useGLTF("/office3.glb");
-
+    const test = useProgress()
+    // console.log(test)
     const Scene = useRef()
     const Chair = useRef()
     const LetterTMaterial = useRef()
 
+    // Probly should REFACTOR ALL of THIS,TIE TO END OF LOAD MODEL
 
-    // REFACTOR ALL THIS,TIE TO END OF LOAD MODEL
+    useEffect(() => {
+        console.log(test.progress)
+        if (test.progress === 100) setHeroModelReady(true);
+    }, [test])
+
+
 
 
     const neonSignMaterial = useRef()

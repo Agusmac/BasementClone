@@ -1,8 +1,6 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { PerspectiveCamera } from '@react-three/drei'
 import { useFrame} from '@react-three/fiber';
-
-
 
 export default function Camera() {
     const camera = useRef();

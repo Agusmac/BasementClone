@@ -12,6 +12,7 @@ import Footer from '../../components/Footer'
 import { gsap } from "gsap/dist/gsap";
 import Image from 'next/image'
 import Scenario from '../../components/Scenario'
+import Loader from '../../components/Loader'
 
 
 export default function Home() {
@@ -20,6 +21,10 @@ export default function Home() {
   const testRef = useRef()
   const [awardVisible, setAwardVisible] = useState(false)
   const [currentAward, setCurrentAward] = useState(1)
+  const [isMobile, setisMobile] = useState(true)
+  const [heroModelReady, setHeroModelReady] = useState(false)
+
+
   // const [crossVisible, setcrossVisible] = useState(false)
 
   useEffect(() => {
@@ -35,7 +40,8 @@ export default function Home() {
   useEffect(() => {
 
     if (window.innerWidth > 641) {
-
+      console.log('FOLLOWER ON')
+      setisMobile(false)
       let start = true;
       gsap.set(".award", { xPercent: -50, yPercent: -50 });
       let xAwardSetter = gsap.quickTo(".award", "x", { duration: 0.4, ease: "power3.out" })
@@ -76,6 +82,7 @@ export default function Home() {
 
         {/* PROBABLY move to a component, and add a res check */}
         {/* {window.innerWidth < 641 && */}
+
         <div className='hidden sm:block'>
           <div className="follower mix-blend-difference">
             <Image priority className="crosshair z-50 relative opacity-0" src="/crosshair.svg" alt='titleImg' width={66} height={66} quality={100} />
@@ -83,18 +90,19 @@ export default function Home() {
           </div>
           <div className="award grid place-content-center">
             <div className={`opacity-0 ${awardVisible && "opacity-100"} duration-300 ease-in-out`}>
-              {/* <Image className=' max-w-[15vw]' src={`/awards/1676293988-certificate-basement-foundry-sotd-1-1.jpg`} alt='titleImg' width={512} height={679} quality={100} /> */}
               <div className='w-[35vw] h-[35vw] lg:w-[20vw] lg:h-[20vw]'>
-                <Scenario currentAward={currentAward}/>
+                {!isMobile && <Scenario currentAward={currentAward} />}
               </div>
             </div>
           </div>
         </div>
+
+        <Loader heroModelReady={heroModelReady}/>
         {/* } */}
 
 
         <Navbar />
-        <Hero darkDivRef={darkDivRef} testRef={testRef} />
+        <Hero darkDivRef={darkDivRef} testRef={testRef} setHeroModelReady={setHeroModelReady}/>
 
         <div className='bg-black relative pt-2 z-20'>
           <div ref={darkDivRef} className='pt-16 sm:pt-[114px] bg-black'>
@@ -110,9 +118,10 @@ export default function Home() {
             <PinnedText />
           </div>
         </div>
-        <AwardsDiv setAwardVisible={setAwardVisible} setCurrentAward={setCurrentAward}/>
+        <AwardsDiv setAwardVisible={setAwardVisible} setCurrentAward={setCurrentAward} />
         <LastSlider />
         <Footer />
+  
       </main>
     </>
   )

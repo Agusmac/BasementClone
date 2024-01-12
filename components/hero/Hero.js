@@ -1,18 +1,14 @@
 // 'use client';
 import React, { useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Leva } from 'leva'
 import Camera from './Camera'
-// import Merged from '../models/MergedModel'
 import Image from 'next/image'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Model from '../models/BasementModel'
 
 // updating the awardsVisible state re rendered this for some reason => so memoed
-const Hero = React.memo(({ darkDivRef, testRef }) => {
-// export default function Hero({ darkDivRef, testRef }) {
-
+const Hero = React.memo(({ darkDivRef, testRef, setHeroModelReady }) => {
     const [isMobile, setIsMobile] = useState(false);
     const heroRef = useRef();
     const titleRef = useRef();
@@ -43,12 +39,11 @@ const Hero = React.memo(({ darkDivRef, testRef }) => {
 
     return (
         <div id='#hero' ref={heroRef} className='relative z-10 w-full h-[92vh] sm:h-screen bg-black '>
-            {/* <Leva collapsed /> */}
             {!isMobile ?
                 <Canvas dpr={1}>
                     <Camera />
                     <ambientLight intensity={4} />
-                    <Model heroRef={heroRef} />
+                    <Model heroRef={heroRef} setHeroModelReady={setHeroModelReady} />
                 </Canvas>
                 :
                 <div className='mt-[15.733vw] min-h-[60vh] h-[70vh] relative'>
@@ -77,6 +72,6 @@ const Hero = React.memo(({ darkDivRef, testRef }) => {
     )
 })
 
-Hero.displayName = 'Hero'; 
+Hero.displayName = 'Hero';
 export default Hero;
 {/* <Image className='' src={'/title.webp'} fill sizes='100vw' quality={100} /> */ }

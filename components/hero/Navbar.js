@@ -4,7 +4,6 @@ import React from 'react'
 export default function Navbar() {
     return (
         <div className='fixed top-0 z-30 w-full h-[15.733vw] md:h-[10.322vw] lg:h-[4.166vw] bg-[rgba(0,0,0,.5)] backdrop-blur-md border-b border-white'>
-
             <div className='fixed h-[15.733vw] md:h-[10.322vw] lg:h-[4.166vw] text-[#efefef] text-xs sm:text-[3.2vw] md:text-[2.258vw] lg:text-[0.833vw] top-0 z-30 w-full  flex items-center justify-between px-[4.266vw] lg:px-[1.56vw] uppercase font-medium leading-[1.1875] tracking-[-0.02em]'>
                 <div className=''>
                     <p className=''>The light that comes <br />from downstairs</p>
