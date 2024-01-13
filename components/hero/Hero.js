@@ -1,4 +1,3 @@
-// 'use client';
 import React, { useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Camera from './Camera'
@@ -8,14 +7,14 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Model from '../models/BasementModel'
 
 // updating the awardsVisible state re rendered this for some reason => so memoed
-const Hero = React.memo(({ darkDivRef, testRef, setHeroModelReady }) => {
+const Hero = React.memo(({ darkDivRef, setHeroModelReady }) => {
     const [isMobile, setIsMobile] = useState(false);
     const heroRef = useRef();
     const titleRef = useRef();
 
-    useEffect(() => {
-        if (window.innerWidth < 641) setIsMobile(true)
-    }, [])
+    // useEffect(() => {
+    //     if (window.innerWidth < 641) setIsMobile(true)
+    // }, [])
     useEffect(() => {
         if (darkDivRef.current) {
             if (window.innerWidth > 641) {
@@ -33,9 +32,9 @@ const Hero = React.memo(({ darkDivRef, testRef, setHeroModelReady }) => {
                 const tl = gsap.timeline({ scrollTrigger: params });
                 tl.to(darkDiv, { y: '-500' })
                     .to(title, { y: '-500' }, 0)
-            }
+            } else setIsMobile(true);
         }
-    }, [darkDivRef, testRef])
+    }, [darkDivRef])
 
     return (
         <div id='#hero' ref={heroRef} className='relative z-10 w-full h-[92vh] sm:h-screen bg-black '>
@@ -43,7 +42,7 @@ const Hero = React.memo(({ darkDivRef, testRef, setHeroModelReady }) => {
                 <Canvas dpr={1}>
                     <Camera />
                     <ambientLight intensity={4} />
-                    <Model heroRef={heroRef} setHeroModelReady={setHeroModelReady}/>
+                    <Model heroRef={heroRef} setHeroModelReady={setHeroModelReady} />
                 </Canvas>
                 :
                 <div className='mt-[15.733vw] min-h-[60vh] h-[70vh] relative'>

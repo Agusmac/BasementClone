@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 // import Image from 'next/image'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 export default function Loader({ heroModelReady }) {
@@ -18,7 +18,7 @@ export default function Loader({ heroModelReady }) {
     //     }
     // }, [])
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (heroModelReady) {
             // setTimeout(() => {
             tl.to(`.bg-Gradient-Loader`, { duration: 0.5, backgroundPositionX: '0%', ease: 'none' })

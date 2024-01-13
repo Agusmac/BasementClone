@@ -1,9 +1,7 @@
-'use client';
 import Image from 'next/image'
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
 
 export default function LastSlider() {
 
@@ -41,7 +39,7 @@ export default function LastSlider() {
         }
     }
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const isMobile = window.innerWidth <= 1024;
 
         if (!isMobile) {

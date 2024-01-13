@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF, useProgress } from "@react-three/drei";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -19,7 +19,7 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
 
 
     const neonSignMaterial = useRef()
-    useLayoutEffect(() => {
+    useEffect(() => {
         // console.log("3d MODEL LOADED")
         gsap.registerPlugin(ScrollTrigger);
         const hero = heroRef.current;

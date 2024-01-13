@@ -1,4 +1,3 @@
-// 'use client';
 import Head from 'next/head'
 import Hero from '../../components/hero/Hero'
 import Navbar from '../../components/hero/Navbar'
@@ -6,21 +5,29 @@ import { useEffect, useRef, useState } from 'react'
 import Marquee from '../../components/Marquee'
 import Slider from '../../components/Slider'
 import PinnedText from '../../components/pinned/PinnedText'
-import AwardsDiv from '../../components/awards/AwardsDiv'
-import LastSlider from '../../components/LastSlider'
-import Footer from '../../components/Footer'
-import { gsap } from "gsap/dist/gsap";
-import Image from 'next/image'
-import Scenario from '../../components/Scenario'
+// import AwardsDiv from '../../components/awards/AwardsDiv'
+// import LastSlider from '../../components/LastSlider'
+// import Footer from '../../components/Footer'
 import Loader from '../../components/Loader'
+import dynamic from 'next/dynamic'
+import Followers from '../../components/Followers'
+ 
+const AwardsDiv = dynamic(() => import('../../components/awards/AwardsDiv'), {
+  loading: () => <p>Loading...</p>,
+})
+const LastSlider = dynamic(() => import('../../components/LastSlider'), {
+  loading: () => <p>Loading...</p>,
+})
+const Footer = dynamic(() => import('../../components/Footer'), {
+  loading: () => <p>Loading...</p>,
+})
 
 export default function Home() {
 
   const darkDivRef = useRef()
-  const testRef = useRef()
+  // const testRef = useRef()
   const [awardVisible, setAwardVisible] = useState(false)
   const [currentAward, setCurrentAward] = useState(1)
-  const [isMobile, setisMobile] = useState(true)
   const [heroModelReady, setHeroModelReady] = useState(false)
 
   useEffect(() => {
@@ -30,38 +37,6 @@ export default function Home() {
       const locomotiveScroll = new LocomotiveScroll();
     })()
   }, [])
-
-  useEffect(() => {
-
-    if (window.innerWidth > 641) {
-      console.log('FOLLOWER ON')
-      setisMobile(false)
-      let start = true;
-      gsap.set(".award", { xPercent: -50, yPercent: -50 });
-      let xAwardSetter = gsap.quickTo(".award", "x", { duration: 0.4, ease: "power3.out" })
-      let yAwardSetter = gsap.quickTo(".award", "y", { duration: 0.4, ease: "power3.out" })
-
-      gsap.set(".follower", { xPercent: -50, yPercent: -50 });
-      let xSetter = gsap.quickSetter(".follower", "x", "px",)
-      let ySetter = gsap.quickSetter(".follower", "y", "px",)
-
-      window.addEventListener("mousemove", e => {
-        xAwardSetter(e.x)
-        yAwardSetter(e.y)
-        xSetter(e.x)
-        ySetter(e.y)
-        if (start) {
-          gsap.to('.crosshair', {
-            opacity: 1,
-            duration: 0.5,
-            ease: 'power2.out',
-          })
-          start = false
-        }
-      });
-    }
-
-  }, []);
 
 
   return (
@@ -74,28 +49,12 @@ export default function Home() {
       </Head>
       <main>
 
-        {/* PROBABLY move to a component, and add a res check */}
-        {/* {window.innerWidth < 641 && */}
-
-        <div className='hidden sm:block'>
-          <div className="follower mix-blend-difference">
-            <Image priority className="crosshair z-50 relative opacity-0" src="/crosshair.svg" alt='titleImg' width={66} height={66} quality={100} />
-            <div className='absolute inset-0 grid place-content-center'><div className='crosshair-dot h-1 w-1'></div></div>
-          </div>
-          <div className="award grid place-content-center">
-            <div className={`opacity-0 ${awardVisible && "opacity-100"} duration-300 ease-in-out`}>
-              <div className='w-[35vw] h-[35vw] lg:w-[20vw] lg:h-[20vw]'>
-                {!isMobile && <Scenario currentAward={currentAward} />}
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <Followers currentAward={currentAward} awardVisible={awardVisible}/>
         {/* <Loader heroModelReady={heroModelReady} /> */}
         {/* } */}
 
         <Navbar />
-        <Hero darkDivRef={darkDivRef} testRef={testRef} setHeroModelReady={setHeroModelReady} />
+        <Hero darkDivRef={darkDivRef} setHeroModelReady={setHeroModelReady} />
 
         <div className='bg-black relative pt-2 z-20'>
           <div ref={darkDivRef} className='pt-16 sm:pt-[114px] bg-black'>

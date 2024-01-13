@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* // "leva": "^0.9.35", */
 :root,
 html,
 body {
@@ -10,7 +10,6 @@ body {
   overflow-x: clip;
   color: #efefef;
   cursor: none;
-  /* overflow-x: hidden; */
 }
 
 .font-mono {
@@ -134,7 +133,6 @@ body:has(.hover-div:hover) .crosshair-dot {
   left: 0;
   right: 0;
   transform: scaleX(0);
-  /* top:90%; */
   bottom: 5%;
   background: #ff4d00;
   height: .06em;
@@ -157,7 +155,6 @@ body:has(.hover-div:hover) .crosshair-dot {
   left: 0;
   right: 0;
   transform: scaleX(0);
-  /* top:90%; */
   bottom: 1%;
   background: #efefef;
   height: 2px;
@@ -176,16 +173,3 @@ body:has(.hover-div:hover) .crosshair-dot {
 .removePointerEvents {
   pointer-events: none !important;
 }
-/* 
-.changingTextPinned {
-  animation: fadeInUp 0.5s ease-out forwards; 
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} */
