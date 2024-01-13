@@ -50,7 +50,7 @@ export default function Home() {
       <main>
 
         <Followers currentAward={currentAward} awardVisible={awardVisible}/>
-        {/* <Loader heroModelReady={heroModelReady} /> */}
+        <Loader heroModelReady={heroModelReady} />
         {/* } */}
 
         <Navbar />
