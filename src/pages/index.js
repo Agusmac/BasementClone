@@ -91,7 +91,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Loader heroModelReady={heroModelReady} />
+        {/* <Loader heroModelReady={heroModelReady} /> */}
         {/* } */}
 
         <Navbar />

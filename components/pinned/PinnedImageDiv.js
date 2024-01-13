@@ -1,9 +1,32 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-export default function PinnedImageDiv({ client, type, p, img, video, translateXLeft }) {
+export default function PinnedImageDiv({ client, type, p, img, video, translateXLeft, n, setCurrentDiv }) {
     const videoRef = useRef()
+    const parentRef = useRef()
     const [isMouseOver, setIsMouseOver] = useState(false)
+
+    useEffect(() => {
+        if (window.innerWidth > 641) {
+            gsap.registerPlugin(ScrollTrigger);
+            const parent = parentRef.current;
+            const params = {
+                trigger: parent,
+                start: 'top 50%',
+                end: 'bottom 50%',
+                onEnter: () => {
+                    setCurrentDiv(n)
+                },
+                onEnterBack: () => {
+                    setCurrentDiv(n)
+                },
+            }
+            const tl = gsap.timeline({ scrollTrigger: params });
+        }
+    }, [])
+
 
     useEffect(() => {
         if (videoRef.current) {
@@ -16,8 +39,8 @@ export default function PinnedImageDiv({ client, type, p, img, video, translateX
     }, [isMouseOver])
 
     return (
-        <div onMouseEnter={() => setIsMouseOver(true)} onMouseLeave={() => setIsMouseOver(false)} className={`pinnedImagesDiv hover-div ${client !== 'Mr Beast' && 'mt-40 sm:mt-[200px]'} relative z-50 mx-auto ${translateXLeft && 'sm:translate-x-[-22%]'} ${client !== 'DYNABOARD' && 'sm:mb-56'} `}>
-            <div className='relative h-full'>
+        <div  onMouseEnter={() => setIsMouseOver(true)} onMouseLeave={() => setIsMouseOver(false)} className={`pinnedImagesDiv hover-div ${client !== 'Mr Beast' && 'mt-40 sm:mt-[200px]'} relative z-50 mx-auto ${translateXLeft && 'sm:translate-x-[-22%]'} ${client !== 'DYNABOARD' && 'sm:mb-56'} `}>
+            <div ref={parentRef} className='relative h-full'>
                 <Image className='absolute inset-0 object-cover w-full h-full' src={`/pinnedSection/${img}`} alt='titleImg' width={1024} height={682} quality={100} />
                 <div className={`absolute inset-0 object-cover w-full h-full hidden opacity-0 sm:grid place-content-center duration-300 ${isMouseOver && "opacity-100"}`}>
                     <video

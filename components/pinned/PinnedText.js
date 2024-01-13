@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 // import Image from 'next/image';
@@ -10,6 +10,11 @@ export default function PinnedText() {
   const parentRef = useRef();
   const firstTitleRef = useRef();
   const secondTitleRef = useRef();
+  const [currentDiv, setCurrentDiv] = useState(1)
+
+  useEffect(() => {
+    console.log(currentDiv);
+  }, [currentDiv])
 
   useEffect(() => {
     if (window.innerWidth > 641) {
@@ -62,15 +67,22 @@ export default function PinnedText() {
             <div className='flex gap-[1vw] justify-end pl-5'>
               <div><p>2K22</p></div>
               <div className='h-[1px] mt-[0.95vw] w-[3.6vw] bg-[#ff4d00]'></div>
-              <div><p>There&apos;s a new beast coming out of the basement.</p></div>
+              <div className='relative min-w-[20vw] lg:min-w-[17vw]'>
+              {/* <p>There&apos;s a new beast coming out of the basement.</p> */}
+                <p className={`absolute top-0 changingTextPinned duration-300 opacity-0 ${currentDiv===1 && "opacity-100"}`}>There&apos;s a new beast coming out of the basement.</p>
+                 <p className={`absolute top-0 changingTextPinned duration-300 opacity-0 ${currentDiv===2 && "opacity-100"}`}>Let&apos;s dive into how our expertise played a key role in contributing to Vercel wins, driving brand growth worldwide.</p>
+                 <p className={`absolute top-0 changingTextPinned duration-300 opacity-0 ${currentDiv===3 && "opacity-100"}`}>Reimaging the shopping experience for one of the cool kids and taking it to a whole new level.</p>
+                 <p className={`absolute top-0 changingTextPinned duration-300 opacity-0 ${currentDiv===4 && "opacity-100"}`}>Ushering in the new face of collaborative development with an exceptional web presence.</p>
+               
+              </div>
             </div>
           </div>
         </div>
 
-        <PinnedImageDiv client={'Mr Beast'} type={'E-Commerce'} img={'mrbeast-img.jpg'} video={'mrbeast-video.mp4'} p={`There's a new beast coming out of the basement.`} />
-        <PinnedImageDiv client={'VERCEL'} type={'BRANDING'} img={'vercel.jpg'} video={'vercel.mp4'} translateXLeft p={`Let's dive into how our expertise played a key role in contributing to Vercel wins, driving brand growth worldwide.`} />
-        <PinnedImageDiv client={'RANBOO'} type={'E-Commerce'} img={'ranboo.jpeg'} video={'ranboo.mp4'} p={`Reimaging the shopping experience for one of the cool kids and taking it to a whole new level.`} />
-        <PinnedImageDiv client={'DYNABOARD'} type={'WEBSITE'} img={'dynaboard.jpg'} video={'dynaboard.mp4'} translateXLeft p={`Ushering in the new face of collaborative development with an exceptional web presence.`} />
+        <PinnedImageDiv n={1} client={'Mr Beast'} type={'E-Commerce'} img={'mrbeast-img.jpg'} setCurrentDiv={setCurrentDiv} video={'mrbeast-video.mp4'} p={`There's a new beast coming out of the basement.`} />
+        <PinnedImageDiv n={2} client={'VERCEL'} type={'BRANDING'} img={'vercel.jpg'} setCurrentDiv={setCurrentDiv} video={'vercel.mp4'} translateXLeft p={`Let's dive into how our expertise played a key role in contributing to Vercel wins, driving brand growth worldwide.`} />
+        <PinnedImageDiv n={3} client={'RANBOO'} type={'E-Commerce'} img={'ranboo.jpeg'} setCurrentDiv={setCurrentDiv} video={'ranboo.mp4'} p={`Reimaging the shopping experience for one of the cool kids and taking it to a whole new level.`} />
+        <PinnedImageDiv n={4} client={'DYNABOARD'} type={'WEBSITE'} img={'dynaboard.jpg'} setCurrentDiv={setCurrentDiv} video={'dynaboard.mp4'} translateXLeft p={`Ushering in the new face of collaborative development with an exceptional web presence.`} />
       </div>
     </div>
   );
