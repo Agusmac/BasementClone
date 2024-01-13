@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Image from 'next/image';
+// import Image from 'next/image';
 import PinnedImageDiv from './PinnedImageDiv';
 
 export default function PinnedText() {
@@ -36,13 +36,9 @@ export default function PinnedText() {
   return (
 
     <div ref={parentRef} className='px-4'>
-      {/* sticky top-0 */}
-      {/* mb-24 sm:mb-0 */}
-      {/* sm:top-36 */}
       <div ref={pinRef} className='relative sm:pb-32 sm:sticky top-36 sm:top-0 mb-[14rem] sm:mb-0 pinnedText basement whitespace-nowrap pt-[88px] sm:pt-[124px] md:pt-36 lg:pt-[105px] tracking-[-0.04em] leading-[1.10]'>
         <h2 ref={firstTitleRef} className='hidden sm:block'>Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / </h2>
         <h2 ref={secondTitleRef} className='hidden sm:block relative -left-[200%] lg:-left-full text-[#303030]'>Mr Beast / Vercel / Ranboo / Dynaboard / Mr Beast / Vercel / Ranboo / Dynaboard / Mr Beast / Vercel / Ranboo / Dynaboard / Mr Beast / Vercel / Ranboo / Dynaboard / </h2>
-
 
         <div className='flex sm:hidden items-center justify-center'>
           <p className='marquee3 pr-8'>Showcase / Showcase / Showcase / Showcase /</p>

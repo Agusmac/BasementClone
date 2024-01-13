@@ -14,7 +14,6 @@ import Image from 'next/image'
 import Scenario from '../../components/Scenario'
 import Loader from '../../components/Loader'
 
-
 export default function Home() {
 
   const darkDivRef = useRef()
@@ -24,17 +23,12 @@ export default function Home() {
   const [isMobile, setisMobile] = useState(true)
   const [heroModelReady, setHeroModelReady] = useState(false)
 
-
-  // const [crossVisible, setcrossVisible] = useState(false)
-
   useEffect(() => {
     //  probably should check for window size and remove this if mobile
-    (
-      async () => {
-        const LocomotiveScroll = (await import('locomotive-scroll')).default
-        const locomotiveScroll = new LocomotiveScroll();
-      }
-    )()
+    (async () => {
+      const LocomotiveScroll = (await import('locomotive-scroll')).default
+      const locomotiveScroll = new LocomotiveScroll();
+    })()
   }, [])
 
   useEffect(() => {
@@ -97,12 +91,11 @@ export default function Home() {
           </div>
         </div>
 
-        <Loader heroModelReady={heroModelReady}/>
+        <Loader heroModelReady={heroModelReady} />
         {/* } */}
 
-
         <Navbar />
-        <Hero darkDivRef={darkDivRef} testRef={testRef} setHeroModelReady={setHeroModelReady}/>
+        <Hero darkDivRef={darkDivRef} testRef={testRef} setHeroModelReady={setHeroModelReady} />
 
         <div className='bg-black relative pt-2 z-20'>
           <div ref={darkDivRef} className='pt-16 sm:pt-[114px] bg-black'>
@@ -121,9 +114,7 @@ export default function Home() {
         <AwardsDiv setAwardVisible={setAwardVisible} setCurrentAward={setCurrentAward} />
         <LastSlider />
         <Footer />
-  
       </main>
     </>
   )
 }
-// #000e

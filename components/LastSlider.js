@@ -46,13 +46,12 @@ export default function LastSlider() {
 
         if (!isMobile) {
             gsap.registerPlugin(ScrollTrigger);
-            // const parent = parentRef.current;
             const title = titleRef.current;
             const imager = imageRef.current;
 
             const params = {
                 trigger: title,
-                // markers: true,
+
                 start: 'top 120%',
                 end: 'bottom -75%',
                 scrub: true,
@@ -60,7 +59,6 @@ export default function LastSlider() {
             const tl = gsap.timeline({ scrollTrigger: params });
 
             tl
-                // .to(title, { y: '-65' })
                 .to(imager, { y: '-125' }, 0)
             // IMPORTANT !!!
             // the 0 is to specify 0 delay, making them both run same time
@@ -101,8 +99,6 @@ export default function LastSlider() {
                 </div>
             </div>
 
-
-
             {/* <div className='sm:hidden mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border border-[#efefef] '>
                 <p className=''><span className="text-[#ff4d00] mr-2">→</span>ABOUT US</p>
             </div> */}
@@ -117,7 +113,6 @@ export default function LastSlider() {
                     </div>
                 </div>
 
-                {/* probably should just map this  */}
                 <div className='flex items-center justify-center font-mono gap-3 text-xs sm:text-base text-[#efefef] sm:gap-5 absolute sm:right-[4.25vw] -bottom-[20vw] sm:-bottom-[88px] lg:-top-[3.5vw] lg:bottom-auto '>
 
                     {[1, 2, 3, 4].map((item, index) => {
@@ -125,7 +120,6 @@ export default function LastSlider() {
                         return (
                             <div key={index} onClick={() => changeImg(`${imgString}`)} className='flex-1 hover-div'>
                                 <p>00{item}</p>
-                                {/* ${sliderImg !== imgString && 'cursor-pointer'} */}
                                 <div className={`relative  group `}>
                                     <Image className='group-hover:brightness-125 duration-300 w-[96px] h-[64px]' src={`/last-slider/${imgString}`} alt='titleImg' width={96} height={64} />
                                     <div className={`absolute inset-0 duration-200 w-full h-full object-cover ${sliderImg === imgString && 'bg-[#ff4d00]'}`}></div>
@@ -133,9 +127,7 @@ export default function LastSlider() {
                             </div>
                         )
                     })}
-
                 </div>
-
             </div>
         </div>
     )

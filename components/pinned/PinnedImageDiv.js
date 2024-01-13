@@ -15,7 +15,6 @@ export default function PinnedImageDiv({ client, type, p, img, video, translateX
         }
     }, [isMouseOver])
 
-    // mrbeast-video.mp4
     return (
         <div onMouseEnter={() => setIsMouseOver(true)} onMouseLeave={() => setIsMouseOver(false)} className={`pinnedImagesDiv hover-div ${client !== 'Mr Beast' && 'mt-40 sm:mt-[200px]'} relative z-50 mx-auto ${translateXLeft && 'sm:translate-x-[-22%]'} ${client !== 'DYNABOARD' && 'sm:mb-56'} `}>
             <div className='relative h-full'>
