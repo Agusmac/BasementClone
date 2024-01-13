@@ -1,4 +1,5 @@
 import gsap, { Power0 } from 'gsap'
+import Image from 'next/image'
 import React, { useEffect, useLayoutEffect } from 'react'
 import { useState } from 'react'
 
@@ -8,7 +9,7 @@ export default function Loader({ heroModelReady }) {
     const tl = gsap.timeline();
 
     useEffect(() => {
-        for (let j = 0; j < 3; j++) {
+        for (let j = 0; j < 5; j++) {
             for (let i = 1; i <= 11; i++) {
                 setTimeout(() => {
                     setAbstractImg(i);
@@ -27,8 +28,7 @@ export default function Loader({ heroModelReady }) {
                             setFinish(true)
                         }, 300);
                     });
-            }, 100);
-
+            }, 300);
 
             // tl.to(".LoaderDIV", { duration: 0.5, y: '-100%', ease: Power0.easeNone },"-=0.5");
             // .to('.LoaderDIV', { duration: 0.5, y: '-100%' });
@@ -44,7 +44,7 @@ export default function Loader({ heroModelReady }) {
         <div className={`LoaderDIV hidden md:block ${finish && "-translate-y-full"} fixed inset-0 w-full h-screen bg-black z-[9999] uppercase duration-700`}>
             <div className={`absolute inset-0 grid place-content-center`}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
-                    <img key={item} className={`abstractImg absolute opacity-50 inset-0 w-full h-full ${abstractImg !== item && "hidden"}`} src={`/abstract/${item}.svg`} alt="abstract" />
+                    <Image priority key={item} width={1920/4} height={1080/4} quality={50} className={`abstractImg absolute opacity-50 inset-0 w-full h-full ${abstractImg !== item && "hidden"}`} src={`/abstract/${item}.svg`} alt="abstract" />
                 ))}
             </div>
             <div className='absolute inset-0  grid place-content-center z-[9999]'>

@@ -12,10 +12,10 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
 
     // Probly should REFACTOR ALL of THIS,TIE TO END OF LOAD MODEL
 
-    useEffect(() => {
-        console.log(prog.progress)
-        if (prog.progress === 100) setHeroModelReady(true);
-    }, [prog])
+    // useEffect(() => {
+    //     // console.log(prog.progress)
+    //     if (prog.progress === 100) setHeroModelReady(true);
+    // }, [prog])
 
 
     const neonSignMaterial = useRef()
@@ -38,100 +38,104 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
             z: '0.1',
         });
 
-        const tlChair = gsap.timeline();
-        tlChair.to(Chair.current.rotation, {
-            y: '+=6', duration: 5, ease: "power1.out",
-        })
 
-        const tlNeonT = gsap.timeline({
-            repeat: -1,
-            repeatDelay: 6,
-            delay: 1.9
-            //   delay: 0.9
-        });
-        tlNeonT
-            .to(LetterTMaterial.current, {
-                opacity: '1',
-                duration: 0.05,
-                ease: 'steps(3)',
+        if (prog.progress === 100) {
+            setHeroModelReady(true);
+            const tlChair = gsap.timeline();
+            tlChair.to(Chair.current.rotation, {
+                y: '+=6', duration: 5, ease: "power1.out",
             })
-            .to(LetterTMaterial.current, {
-                opacity: '0.2',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(LetterTMaterial.current, {
-                opacity: '0.8',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(LetterTMaterial.current, {
-                opacity: '0.3',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(LetterTMaterial.current, {
-                opacity: '1',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            // ///////////
-            .to(LetterTMaterial.current, {
-                opacity: '1',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(LetterTMaterial.current, {
-                opacity: '0.2',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(LetterTMaterial.current, {
-                opacity: '0.8',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(LetterTMaterial.current, {
-                opacity: '0.3',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(LetterTMaterial.current, {
-                opacity: '1',
-                duration: 0.05,
-                ease: 'steps(3)',
+
+            const tlNeonT = gsap.timeline({
+                repeat: -1,
+                repeatDelay: 6,
+                delay: 2.9
+                //   delay: 0.9
             });
-        // ////////////////////////
-        const tlNeonSign = gsap.timeline();
-        tlNeonSign
-            .to(neonSignMaterial.current, {
-                opacity: '1',
-                duration: 0.05,
-                ease: 'steps(3)',
-                delay: 2.18
-                //      delay: 1.18
-            })
-            .to(neonSignMaterial.current, {
-                opacity: '0.2',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(neonSignMaterial.current, {
-                opacity: '0.8',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(neonSignMaterial.current, {
-                opacity: '0.5',
-                duration: 0.05,
-                ease: 'steps(3)',
-            })
-            .to(neonSignMaterial.current, {
-                opacity: '1',
-                duration: 0.05,
-                ease: 'steps(3)',
-            });
-    })
+            tlNeonT
+                .to(LetterTMaterial.current, {
+                    opacity: '1',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '0.2',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '0.8',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '0.3',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '1',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                // ///////////
+                .to(LetterTMaterial.current, {
+                    opacity: '1',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '0.2',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '0.8',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '0.3',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(LetterTMaterial.current, {
+                    opacity: '1',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                });
+            // ////////////////////////
+            const tlNeonSign = gsap.timeline();
+            tlNeonSign
+                .to(neonSignMaterial.current, {
+                    opacity: '1',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                    delay: 3.18
+                    //      delay: 1.18
+                })
+                .to(neonSignMaterial.current, {
+                    opacity: '0.2',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(neonSignMaterial.current, {
+                    opacity: '0.8',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(neonSignMaterial.current, {
+                    opacity: '0.5',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                })
+                .to(neonSignMaterial.current, {
+                    opacity: '1',
+                    duration: 0.05,
+                    ease: 'steps(3)',
+                });
+        }
+    }, [prog])
 
     return (
         <group ref={Scene}>
