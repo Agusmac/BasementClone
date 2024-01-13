@@ -5,8 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default function Model({ props, heroRef, setHeroModelReady }) {
     const { nodes, materials } = useGLTF("/office3.glb");
-    const test = useProgress()
-    // console.log(test)
+    const prog = useProgress()
     const Scene = useRef()
     const Chair = useRef()
     const LetterTMaterial = useRef()
@@ -14,11 +13,9 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
     // Probly should REFACTOR ALL of THIS,TIE TO END OF LOAD MODEL
 
     useEffect(() => {
-        console.log(test.progress)
-        if (test.progress === 100) setHeroModelReady(true);
-    }, [test])
-
-
+        console.log(prog.progress)
+        if (prog.progress === 100) setHeroModelReady(true);
+    }, [prog])
 
 
     const neonSignMaterial = useRef()
@@ -49,7 +46,8 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
         const tlNeonT = gsap.timeline({
             repeat: -1,
             repeatDelay: 6,
-            delay: 0.9
+            delay: 1.9
+            //   delay: 0.9
         });
         tlNeonT
             .to(LetterTMaterial.current, {
@@ -110,7 +108,8 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
                 opacity: '1',
                 duration: 0.05,
                 ease: 'steps(3)',
-                delay: 1.18
+                delay: 2.18
+                //      delay: 1.18
             })
             .to(neonSignMaterial.current, {
                 opacity: '0.2',

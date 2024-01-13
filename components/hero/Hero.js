@@ -43,7 +43,7 @@ const Hero = React.memo(({ darkDivRef, testRef, setHeroModelReady }) => {
                 <Canvas dpr={1}>
                     <Camera />
                     <ambientLight intensity={4} />
-                    <Model heroRef={heroRef} setHeroModelReady={setHeroModelReady} />
+                    <Model heroRef={heroRef} setHeroModelReady={setHeroModelReady}/>
                 </Canvas>
                 :
                 <div className='mt-[15.733vw] min-h-[60vh] h-[70vh] relative'>

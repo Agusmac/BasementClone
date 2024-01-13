@@ -73,6 +73,14 @@ body:has(.hover-div:hover) .crosshair-dot {
   animation-direction: reverse;
 }
 
+.bg-Gradient-Loader {
+  background-clip: text !important;
+  background: linear-gradient(90deg, #ff4d00 0, #ff4d00 50%, #efefef 50%);
+  background-position-x: 100%;
+  /* background-position: 100% 0%; */
+  background-size: 200% 100% !important;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -98,13 +106,15 @@ body:has(.hover-div:hover) .crosshair-dot {
     cursor: auto !important;
   } */
 
-  @media (max-width: 641px) {
-    :root,
+@media (max-width: 641px) {
+
+  :root,
   html,
   body {
     cursor: auto !important;
   }
-  }
+}
+
 @media (min-width: 641px) {
   .pinnedImagesDiv {
     width: max(256px, 47.3958333333vw);
@@ -171,6 +181,6 @@ body:has(.hover-div:hover) .crosshair-dot {
   transform-origin: top left;
 }
 
-.removePointerEvents{
+.removePointerEvents {
   pointer-events: none !important;
 }
