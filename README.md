@@ -1,5 +1,7 @@
 ## Basement Clone by Agustin Mac Rae
 
+Open [LIVE SITE](https://basement-clone-vals.vercel.app/) on Vercel
+
 Tech Stack:  
 - Next.js  
 - Tailwind  
@@ -13,7 +15,7 @@ Took the models from the basement website itself
 
 Drei was used for Postprocessing(chromatic aberration), MeshDistortMaterial, and to help load models.
 
-Open [LIVE SITE](https://basement-clone-vals.vercel.app/) on Vercel
+
 
 
 
