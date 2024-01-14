@@ -19,7 +19,7 @@ export default function Slider() {
             for (let j = 0; j < 3; j++) {
                 for (let i = 1; i <= 11; i++) {
                     setTimeout(() => {
-                        console.log(i)
+                        // console.log(i)
                         setAbstractImg(i);
                     }, 75 * (i + j * 10)); 
                 }

@@ -18,9 +18,8 @@ export default function LastSlider() {
             for (let j = 0; j < 3; j++) {
                 for (let i = 1; i <= 11; i++) {
                     setTimeout(() => {
-                        console.log(i)
                         setAbstractImg(i);
-                    }, 75 * (i + j * 10)); 
+                    }, 75 * (i + j * 10));
                 }
             }
             setStartSlide(1);
@@ -30,11 +29,11 @@ export default function LastSlider() {
 
                 setTimeout(() => {
                     setStartSlide(2);
-                }, 200 * 4); 
+                }, 200 * 4);
 
                 setTimeout(() => {
                     setStartSlide(0);
-                }, 200 * 5); 
+                }, 200 * 5);
             }, 1000);
         }
     }
@@ -47,17 +46,10 @@ export default function LastSlider() {
             const title = titleRef.current;
             const imager = imageRef.current;
 
-            const params = {
-                trigger: title,
-
-                start: 'top 120%',
-                end: 'bottom -75%',
-                scrub: true,
-            }
+            const params = { trigger: title, start: 'top 120%', end: 'bottom -75%', scrub: true, }
             const tl = gsap.timeline({ scrollTrigger: params });
 
-            tl
-                .to(imager, { y: '-125' }, 0)
+            tl.to(imager, { y: '-125' }, 0)
             // IMPORTANT !!!
             // the 0 is to specify 0 delay, making them both run same time
 
@@ -97,16 +89,12 @@ export default function LastSlider() {
                 </div>
             </div>
 
-            {/* <div className='sm:hidden mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border border-[#efefef] '>
-                <p className=''><span className="text-[#ff4d00] mr-2">→</span>ABOUT US</p>
-            </div> */}
-
             <div className='lg:w-[64vw] relative lg:ml-auto mr-0'>
                 <div className='relative lg:w-[64vw] min-h-[393px] h-[42.6vw] overflow-hidden grid place-content-center mb-[200px] lg:mb-0'>
                     <Image ref={imageRef} priority className='lg:scale-[1.20] absolute object-cover w-full h-full inset-0 lg:top-20 ' src={`/last-slider/${sliderImg}`} alt='titleImg' width={2454 / 2} height={1632 / 2} quality={100} />
                     <div className={`absolute inset-0 grid place-content-center ${startSlide !== 0 && 'duration-300'} ease-[cubic-bezier(0.165,0.84,0.44,1)]  bg-[#ff4d00] ${startSlide === 2 ? '-top-full bottom-full' : startSlide === 1 ? 'top-0' : 'top-full'}`}>
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
-                            <img key={item} className={`abstractImg absolute inset-0 w-full h-full ${abstractImg !==item && "hidden" }`} src={`/abstract/${item}.svg`} alt="" />
+                            <img key={item} className={`abstractImg absolute inset-0 w-full h-full ${abstractImg !== item && "hidden"}`} src={`/abstract/${item}.svg`} alt="" />
                         ))}
                     </div>
                 </div>
@@ -130,6 +118,3 @@ export default function LastSlider() {
         </div>
     )
 }
-{/* <div className='hidden cursor-pointer sm:block absolute backdrop-blur-sm -right-5 bottom-1/2 mb-10 round-button bg-[rgba(0,0,0,0.2)] w-fit rounded-[99%] whitespace-nowrap border-2 border-[#efefef]'>
-<p className=''><span className="text-[#ff4d00] mr-5">→</span>ABOUT US</p>
-</div> */}

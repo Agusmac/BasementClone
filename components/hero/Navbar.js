@@ -18,7 +18,6 @@ export default function Navbar() {
                     <Image alt='menu' className='fill-[red] group-hover:fill-[red] lg:max-w-[32px] xl:max-w-[37px] h-auto' src={'/menu.svg'} width={37.3} height={37.3} quality={100} />
                 </div>
             </div>
-
         </div>
     )
 }

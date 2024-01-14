@@ -9,7 +9,7 @@ export function Awwwards({ props, parentDiv, mediumParentDiv }) {
   const model = useRef()
 
   useEffect(() => {
-    // console.log("3d MODEL LOADED")
+    // console.log("Awwward MODEL LOADED")
     gsap.registerPlugin(ScrollTrigger);
 
     if (window.innerWidth > 1024) {
@@ -20,7 +20,6 @@ export function Awwwards({ props, parentDiv, mediumParentDiv }) {
           start: 'top +=88px',
           end: 'bottom 30%',
           scrub: true,
-          // markers: true,
         },
       });
 
@@ -33,7 +32,6 @@ export function Awwwards({ props, parentDiv, mediumParentDiv }) {
           start: 'top bottom',
           end: 'top +=88px',
           scrub: true,
-          // markers: true,
         },
       });
 
@@ -47,17 +45,14 @@ export function Awwwards({ props, parentDiv, mediumParentDiv }) {
           start: 'bottom bottom',
           end: 'bottom top',
           scrub: true,
-          // markers: true,
         },
       });
-      timeline3.to(model.current.rotation, {
-        x: '-=0.3', ease: "power1.in"
-      });
-      timeline3.to(model.current.position, {
-        y: '+=0.3', ease: "power1.in", 
-      },0);
+
+      timeline3.to(model.current.rotation, { x: '-=0.3', ease: "power1.in" });
+      timeline3.to(model.current.position, { y: '+=0.3', ease: "power1.in", }, 0);
+
     } else {
-      console.log('MEDIUM GSAP')
+      // console.log('MEDIUM GSAP')
       const mediumParent = mediumParentDiv.current
       const tlMediumScreen = gsap.timeline({
         scrollTrigger: {
@@ -65,20 +60,14 @@ export function Awwwards({ props, parentDiv, mediumParentDiv }) {
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
-          // markers: true,
         },
       });
-      tlMediumScreen.to(model.current.rotation, {
-        x: '-=0.8', ease: "none"
-      });
-      tlMediumScreen.to(model.current.position, {
-        y: '+=0.3', ease: "none", 
-      },0);
+
+      tlMediumScreen.to(model.current.rotation, { x: '-=0.8', ease: "none" });
+      tlMediumScreen.to(model.current.position, { y: '+=0.3', ease: "none", }, 0);
 
     }
-
-  },[])
-
+  }, [])
 
   const { nodes, materials } = useGLTF("/Awwwards.glb");
 

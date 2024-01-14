@@ -12,9 +12,6 @@ const Hero = React.memo(({ darkDivRef, setHeroModelReady }) => {
     const heroRef = useRef();
     const titleRef = useRef();
 
-    // useEffect(() => {
-    //     if (window.innerWidth < 641) setIsMobile(true)
-    // }, [])
     useEffect(() => {
         if (darkDivRef.current) {
             if (window.innerWidth > 641) {
@@ -24,7 +21,6 @@ const Hero = React.memo(({ darkDivRef, setHeroModelReady }) => {
                 const darkDiv = darkDivRef.current;
                 const params = {
                     trigger: hero,
-                    // markers: true,
                     start: 'top top',
                     end: 'bottom 20%',
                     scrub: true,
