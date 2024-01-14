@@ -8,16 +8,7 @@ export default function Loader({ heroModelReady }) {
     const [abstractImg, setAbstractImg] = useState(1)
     const tl = gsap.timeline();
 
-    // useEffect(() => {
-    //     for (let j = 0; j < 5; j++) {
-    //         for (let i = 1; i <= 11; i++) {
-    //             setTimeout(() => {
-    //                 setAbstractImg(i);
-    //             }, 75 * (i + j * 10));
-    //         }
-    //     }
-    // }, [])
-
+    // keeping these two separated bc of some weird timing bugs
     useLayoutEffect(() => {
         if (!heroModelReady) {
             const updateAbstractImage = () => {
@@ -29,29 +20,15 @@ export default function Loader({ heroModelReady }) {
         }
     }, [heroModelReady]);
 
-
-
-
     useEffect(() => {
         if (heroModelReady) {
-            // setTimeout(() => {
             tl.to(`.bg-Gradient-Loader`, { duration: 0.5, backgroundPositionX: '0%', ease: 'none' })
             tl.to(`.bg-Gradient-Loader`, { duration: 0.25, y: '-300%', opacity: 0 }, "+=0.5")
                 .eventCallback("onComplete", () => {
                         setFinish(true)
                 });
-            // }, 300);
-
-            // tl.to(".LoaderDIV", { duration: 0.5, y: '-100%', ease: Power0.easeNone },"-=0.5");
-            // .to('.LoaderDIV', { duration: 0.5, y: '-100%' });
-            // '-=0.5' means start immediately after the previous animation ends
-            // setTimeout(() => {
-            //     setFinish(true)
-            // }, 900);
         }
     }, [heroModelReady])
-
-    // if (window.innerWidth < 641) return null;
 
     return (
         <div className={`LoaderDIV hidden sm:block ${finish && "-translate-y-full"} fixed inset-0 w-full h-screen bg-black z-[9999] uppercase duration-700`}>
