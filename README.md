@@ -1,6 +1,6 @@
 ## Basement Clone by Agustin Mac Rae
 
-Tech Stack:  
+#Tech Stack:  
 - Next.js  
 - Tailwind  
 - GSAP
