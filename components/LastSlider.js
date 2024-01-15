@@ -60,7 +60,7 @@ export default function LastSlider() {
 
     return (
         // 
-        <div ref={parentRef} className='mt-[max(100px,17vw)] md:mt-[max(75px,9vw)] lg:mt-[max(100px,17vw)] px-4 sm:px-[1.56vw] lg:pr-0 sticky top-0 lg:top-[128px] '>
+        <div ref={parentRef} className='mt-[max(100px,17vw)] md:mt-[max(75px,9vw)] lg:mt-[max(100px,17vw)] px-4 sm:px-[1.56vw] lg:pr-0 sm:sticky top-0 lg:top-[128px] '>
 
             <div className='lg:absolute -top-32 left-0 z-10 mix-blend-difference pl-[1.56vw]'>
                 <div ref={titleRef} className='max-w-max relative mb-[3.25vw] '>
@@ -90,7 +90,7 @@ export default function LastSlider() {
             </div>
 
             <div className='lg:w-[64vw] relative lg:ml-auto mr-0'>
-                <div className='relative lg:w-[64vw] min-h-[393px] h-[42.6vw] overflow-hidden grid place-content-center mb-[200px] lg:mb-0'>
+                <div className='relative lg:w-[64vw] min-h-[80vw] sm:min-h-[393px] h-[42.6vw] overflow-hidden grid place-content-center mb-[150px] sm:mb-[200px] lg:mb-0'>
                     <Image ref={imageRef} priority className='lg:scale-[1.20] absolute object-cover w-full h-full inset-0 lg:top-20 ' src={`/last-slider/${sliderImg}`} alt='titleImg' width={2454 / 2} height={1632 / 2} quality={100} />
                     <div className={`absolute inset-0 grid place-content-center ${startSlide !== 0 && 'duration-300'} ease-[cubic-bezier(0.165,0.84,0.44,1)]  bg-[#ff4d00] ${startSlide === 2 ? '-top-full bottom-full' : startSlide === 1 ? 'top-0' : 'top-full'}`}>
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
@@ -107,7 +107,7 @@ export default function LastSlider() {
                             <div key={index} onClick={() => changeImg(`${imgString}`)} className='flex-1 hover-div'>
                                 <p>00{item}</p>
                                 <div className={`relative  group `}>
-                                    <Image className='group-hover:brightness-125 duration-300 w-[96px] h-[64px]' src={`/last-slider/${imgString}`} alt='titleImg' width={96} height={64} />
+                                    <Image className='group-hover:brightness-125 duration-300 w-[96px] h-[64px] object-cover' src={`/last-slider/${imgString}`} alt='titleImg' width={96} height={64} />
                                     <div className={`absolute inset-0 duration-200 w-full h-full object-cover ${sliderImg === imgString && 'bg-[#ff4d00]'}`}></div>
                                 </div>
                             </div>
