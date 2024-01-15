@@ -25,7 +25,7 @@ export default function Loader({ heroModelReady }) {
                 }
             } else {
                 const updateAbstractImage = () => {
-                    console.log('ANIMATION RUNNING');
+                    // console.log('ANIMATION RUNNING');
                     // Increment the abstract image index, restart to 1 when it reaches 11
                     setAbstractImg((prevImg) => (prevImg % 11) + 1);
                     timeoutId = setTimeout(updateAbstractImage, 75);

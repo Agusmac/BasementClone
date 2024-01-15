@@ -5,7 +5,8 @@ import { PerspectiveCamera } from '@react-three/drei';
 import { EffectComposer, ChromaticAberration } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 
-export default function RotatingModel({ parentDiv, mediumParentDiv }) {
+const RotatingModel = React.memo(({ parentDiv, mediumParentDiv }) => {
+  // export default function RotatingModel({ parentDiv, mediumParentDiv }) {
   console.log("LOADED AWARD MODEL")
 
   return (
@@ -19,12 +20,15 @@ export default function RotatingModel({ parentDiv, mediumParentDiv }) {
       </Canvas>
     </>
   )
-}
+})
 
-  // const { offset } = useControls('Tonemapping', {
-  //   offset: { value: 0.008199999999999999, step: 0.0001, min: 0, max: 0.1 }
-  // })
-  // possible Values
-  // {"offset":0.008199999999999999}
-  // {"offset":0.0072}
-  // {"offset":0.01}
+
+RotatingModel.displayName = 'RotatingModel';
+export default RotatingModel;
+// const { offset } = useControls('Tonemapping', {
+//   offset: { value: 0.008199999999999999, step: 0.0001, min: 0, max: 0.1 }
+// })
+// possible Values
+// {"offset":0.008199999999999999}
+// {"offset":0.0072}
+// {"offset":0.01}
