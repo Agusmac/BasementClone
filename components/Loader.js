@@ -1,35 +1,50 @@
 import gsap from 'gsap'
 import Image from 'next/image'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useState } from 'react'
 
 export default function Loader({ heroModelReady }) {
     const [finish, setFinish] = useState(false)
     const [abstractImg, setAbstractImg] = useState(1)
     const tl = gsap.timeline();
-    const [isMobile, setIsMobile] = useState(false)
+    const [isLoaderOff, setIsLoaderOff] = useState(false)
 
     useLayoutEffect(() => {
+
+        let timeoutId;
+
         if (window.innerWidth > 640) {
             if (heroModelReady) {
                 tl.to(`.bg-Gradient-Loader`, { duration: 0.5, backgroundPositionX: '0%', ease: 'none' })
-                tl.to(`.bg-Gradient-Loader`, { duration: 0.25, y: '-300%', opacity: 0 }, "+=0.5")
-                    .eventCallback("onComplete", () => {
-                        setFinish(true)
+                    .to(`.bg-Gradient-Loader`, { duration: 0.25, y: '-300%', opacity: 0 }, '+=0.5')
+                    .eventCallback('onComplete', () => {
+                        setFinish(true);
                     });
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
             } else {
                 const updateAbstractImage = () => {
+                    console.log('ANIMATION RUNNING');
                     // Increment the abstract image index, restart to 1 when it reaches 11
                     setAbstractImg((prevImg) => (prevImg % 11) + 1);
-                    setTimeout(updateAbstractImage, 75);
+                    timeoutId = setTimeout(updateAbstractImage, 75);
                 };
-                updateAbstractImage(); // Start the recursive setTimeout loop
-            }
-        } else setIsMobile(true);
+                updateAbstractImage();
 
+                return () => {
+                    setTimeout(() => {
+                        clearTimeout(timeoutId);
+                        setIsLoaderOff(true)
+                    }, 5000)
+                };
+            }
+        } else {
+            setIsLoaderOff(true);
+        }
     }, [heroModelReady]);
 
-    if (isMobile) return null;
+    if (isLoaderOff) return null;
 
     return (
         <div className={`LoaderDIV hidden sm:block ${finish && "-translate-y-full"} fixed inset-0 w-full h-screen bg-black z-[9999] uppercase duration-700`}>

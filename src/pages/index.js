@@ -11,7 +11,7 @@ import PinnedText from '../../components/pinned/PinnedText'
 import Loader from '../../components/Loader'
 import dynamic from 'next/dynamic'
 import Followers from '../../components/Followers'
- 
+
 const AwardsDiv = dynamic(() => import('../../components/awards/AwardsDiv'), {
   loading: () => <p>Loading...</p>,
 })
@@ -25,7 +25,7 @@ const Footer = dynamic(() => import('../../components/Footer'), {
 export default function Home() {
 
   const darkDivRef = useRef()
-  // const testRef = useRef()
+
   const [awardVisible, setAwardVisible] = useState(false)
   const [currentAward, setCurrentAward] = useState(1)
   const [heroModelReady, setHeroModelReady] = useState(false)
@@ -49,8 +49,8 @@ export default function Home() {
       </Head>
       <main>
 
-        <Followers currentAward={currentAward} awardVisible={awardVisible}/>
-        <Loader heroModelReady={heroModelReady} />
+        <Followers currentAward={currentAward} awardVisible={awardVisible} />
+       <Loader heroModelReady={heroModelReady} />
         {/* } */}
 
         <Navbar />
