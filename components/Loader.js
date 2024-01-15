@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import Image from 'next/image'
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 export default function Loader({ heroModelReady }) {
@@ -9,7 +9,7 @@ export default function Loader({ heroModelReady }) {
     const tl = gsap.timeline();
     const [isLoaderOff, setIsLoaderOff] = useState(false)
 
-    useLayoutEffect(() => {
+    useEffect(() => {
 
         let timeoutId;
 
