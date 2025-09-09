@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
+gsap.registerPlugin(ScrollTrigger);
 export default function PinnedImageDiv({ client, type, p, img, video, translateXLeft, n, setCurrentDiv }) {
     const videoRef = useRef()
     const parentRef = useRef()
@@ -10,7 +10,7 @@ export default function PinnedImageDiv({ client, type, p, img, video, translateX
 
     useEffect(() => {
         if (window.innerWidth > 641) {
-            gsap.registerPlugin(ScrollTrigger);
+       
             const parent = parentRef.current;
             const params = {
                 trigger: parent,

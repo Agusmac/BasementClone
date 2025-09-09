@@ -4,8 +4,7 @@ import React from 'react'
 export default function Marquee() {
     return (
         <div className='relative '>
-            <div className='overflow-hidden '>
-                {/* definitely not optimal solution but it makes the trick */}
+            <div className='overflow-hidden'>
                 <div className='flex py-2 md:py-5 scale-[.70] md:scale-100'>
                     {[1, 2].map((item, k) =>
                         <div key={item} className='marquee flex items-center flex-shrink-0 h-[180px]'>

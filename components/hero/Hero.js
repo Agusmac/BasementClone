@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Camera from './Camera'
 import Image from 'next/image'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Model from '../models/BasementModel'
-
-// updating the awardsVisible state re rendered this for some reason => so memoed
+import Loader from './Loader';
+   gsap.registerPlugin(ScrollTrigger);
+//    gsap.registerPlugin(useGSAP, CustomEase);
+// updating the awardsVisible state re rendered this and caused some issues => so memoed
 const Hero = React.memo(({ darkDivRef, setHeroModelReady }) => {
     const [isMobile, setIsMobile] = useState(false);
     const heroRef = useRef();
@@ -15,7 +17,7 @@ const Hero = React.memo(({ darkDivRef, setHeroModelReady }) => {
     useEffect(() => {
         if (darkDivRef.current) {
             if (window.innerWidth > 641) {
-                gsap.registerPlugin(ScrollTrigger);
+             
                 const hero = heroRef.current;
                 const title = titleRef.current;
                 const darkDiv = darkDivRef.current;
@@ -38,7 +40,9 @@ const Hero = React.memo(({ darkDivRef, setHeroModelReady }) => {
                 <Canvas dpr={1}>
                     <Camera />
                     <ambientLight intensity={4} />
-                    <Model heroRef={heroRef} setHeroModelReady={setHeroModelReady} />
+                    <Suspense fallback={<Loader />}>
+                        <Model heroRef={heroRef} setHeroModelReady={setHeroModelReady} />
+                    </Suspense>
                 </Canvas>
                 :
                 <div className='mt-[15.733vw] min-h-[60vh] h-[70vh] relative'>

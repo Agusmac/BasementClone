@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
+gsap.registerPlugin(ScrollTrigger);
 export default function Slider() {
 
     const parentRef = useRef();
@@ -21,7 +21,7 @@ export default function Slider() {
                     setTimeout(() => {
                         // console.log(i)
                         setAbstractImg(i);
-                    }, 75 * (i + j * 10)); 
+                    }, 75 * (i + j * 10));
                 }
             }
             setStartSlide(1);
@@ -31,11 +31,11 @@ export default function Slider() {
 
                 setTimeout(() => {
                     setStartSlide(2);
-                }, 200 * 4); 
+                }, 200 * 4);
 
                 setTimeout(() => {
                     setStartSlide(0);
-                }, 200 * 5); 
+                }, 200 * 5);
             }, 1000);
         }
     }
@@ -45,7 +45,7 @@ export default function Slider() {
         const isMobile = window.innerWidth <= 641;
 
         if (!isMobile) {
-            gsap.registerPlugin(ScrollTrigger);
+
             const title = titleRef.current;
             const imager = imageRef.current;
 
@@ -87,7 +87,7 @@ export default function Slider() {
                     <Image ref={imageRef} priority className='scale-[1.20] absolute object-cover w-full h-full inset-0 sm:top-20 ' src={`/slider-1/${sliderImg}`} alt='titleImg' width={2454 / 2} height={1632 / 2} quality={100} />
                     <div className={`absolute inset-0 grid place-content-center ${startSlide !== 0 && 'duration-300'} ease-[cubic-bezier(0.165,0.84,0.44,1)]  bg-[#ff4d00] ${startSlide === 2 ? '-top-full bottom-full' : startSlide === 1 ? 'top-0' : 'top-full'}`}>
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => (
-                            <img key={item} className={`abstractImg absolute inset-0 w-full h-full ${abstractImg !==item && "hidden" }`} src={`/abstract/${item}.svg`} alt="" />
+                            <img key={item} className={`abstractImg absolute inset-0 w-full h-full ${abstractImg !== item && "hidden"}`} src={`/abstract/${item}.svg`} alt="" />
                         ))}
                     </div>
                 </div>

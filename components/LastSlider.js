@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function LastSlider() {
 
@@ -42,7 +43,7 @@ export default function LastSlider() {
         const isMobile = window.innerWidth <= 1024;
 
         if (!isMobile) {
-            gsap.registerPlugin(ScrollTrigger);
+          
             const title = titleRef.current;
             const imager = imageRef.current;
 
@@ -50,9 +51,6 @@ export default function LastSlider() {
             const tl = gsap.timeline({ scrollTrigger: params });
 
             tl.to(imager, { y: '-125' }, 0)
-            // IMPORTANT !!!
-            // the 0 is to specify 0 delay, making them both run same time
-
         }
 
     }, [])

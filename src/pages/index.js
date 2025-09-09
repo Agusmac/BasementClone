@@ -31,7 +31,6 @@ export default function Home() {
   const [heroModelReady, setHeroModelReady] = useState(false)
 
   useEffect(() => {
-    //  probably should check for window size and remove this if mobile
     (async () => {
       const LocomotiveScroll = (await import('locomotive-scroll')).default
       const locomotiveScroll = new LocomotiveScroll();
@@ -50,8 +49,7 @@ export default function Home() {
       <main>
 
         <Followers currentAward={currentAward} awardVisible={awardVisible} />
-       <Loader heroModelReady={heroModelReady} />
-        {/* } */}
+        <Loader heroModelReady={heroModelReady} />
 
         <Navbar />
         <Hero darkDivRef={darkDivRef} setHeroModelReady={setHeroModelReady} />

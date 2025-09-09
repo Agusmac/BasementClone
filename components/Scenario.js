@@ -19,24 +19,16 @@ function AwardImage({ currentAward }) {
     <mesh position={[0, 0, 0]}>
       <planeGeometry args={[0.512 * 4, 0.679 * 4, 128, 128]} />
       <MeshDistortMaterial map={awardArray[currentAward - 1]} distort={0.3} speed={5} toneMapped={false} />
-      {/* anisotropy={} */}
     </mesh>
   )
 }
 
 export default function Scenario({ currentAward }) {
-  console.log('LOADED SCENARIO')
   return (
     <Canvas className='pointer-events-none removePointerEvents' camera={{ position: [0, 0, 0.47 * 4] }}>
-      <ambientLight intensity={Math.PI} />
+      <ambientLight intensity={3.14} />
       <AwardImage currentAward={currentAward} />
     </Canvas>
   )
 }
 
-  // const { distortion } = useControls('awardsFlag', {
-  //   distortion: { value: 0.3, step: 0.01, min: -1, max: 1 }
-  // })
-  // const { speeder } = useControls('awardsFlag', {
-  //   speeder: { value: 5, step: 0.01, min: 0, max: 10 }
-  // })

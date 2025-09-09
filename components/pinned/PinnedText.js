@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import PinnedImageDiv from './PinnedImageDiv';
+gsap.registerPlugin(ScrollTrigger);
 
 export default function PinnedText() {
   // const pinRef = useRef();
@@ -12,7 +13,7 @@ export default function PinnedText() {
 
   useEffect(() => {
     if (window.innerWidth > 641) {
-      gsap.registerPlugin(ScrollTrigger);
+
       // const pinnedElement = pinRef.current;
       const parent = parentRef.current;
       const firstTitle = firstTitleRef.current
@@ -34,7 +35,7 @@ export default function PinnedText() {
   return (
 
     <div ref={parentRef} className='px-4'>
-    {/* ref={pinRef} */}
+      {/* ref={pinRef} */}
       <div className='relative sm:pb-32 sm:sticky top-36 sm:top-0 mb-[14rem] sm:mb-0 pinnedText basement whitespace-nowrap pt-[88px] sm:pt-[124px] md:pt-36 lg:pt-[105px] tracking-[-0.04em] leading-[1.10]'>
         <h2 ref={firstTitleRef} className='hidden sm:block'>Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / Showcase / </h2>
         <h2 ref={secondTitleRef} className='hidden sm:block relative -left-[200%] lg:-left-full text-[#303030]'>Mr Beast / Vercel / Ranboo / Dynaboard / Mr Beast / Vercel / Ranboo / Dynaboard / Mr Beast / Vercel / Ranboo / Dynaboard / Mr Beast / Vercel / Ranboo / Dynaboard / </h2>
@@ -60,10 +61,10 @@ export default function PinnedText() {
               <div><p>2K22</p></div>
               <div className='h-[1px] mt-[0.95vw] w-[3.6vw] bg-[#ff4d00]'></div>
               <div className='relative min-w-[20vw] lg:min-w-[17vw]'>
-                <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv===1 && "opacity-100"}`}>There&apos;s a new beast coming out of the basement.</p>
-                 <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv===2 && "opacity-100"}`}>Let&apos;s dive into how our expertise played a key role in contributing to Vercel wins, driving brand growth worldwide.</p>
-                 <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv===3 && "opacity-100"}`}>Reimaging the shopping experience for one of the cool kids and taking it to a whole new level.</p>
-                 <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv===4 && "opacity-100"}`}>Ushering in the new face of collaborative development with an exceptional web presence.</p>
+                <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv === 1 && "opacity-100"}`}>There&apos;s a new beast coming out of the basement.</p>
+                <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv === 2 && "opacity-100"}`}>Let&apos;s dive into how our expertise played a key role in contributing to Vercel wins, driving brand growth worldwide.</p>
+                <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv === 3 && "opacity-100"}`}>Reimaging the shopping experience for one of the cool kids and taking it to a whole new level.</p>
+                <p className={`absolute top-0 duration-300 opacity-0 ${currentDiv === 4 && "opacity-100"}`}>Ushering in the new face of collaborative development with an exceptional web presence.</p>
               </div>
             </div>
           </div>

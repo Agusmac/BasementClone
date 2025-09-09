@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { useGLTF, useProgress } from "@react-three/drei";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
+      gsap.registerPlugin(ScrollTrigger);
 export default function Model({ props, heroRef, setHeroModelReady }) {
     const { nodes, materials } = useGLTF("/office3.glb");
-    const prog = useProgress()
+    const { progress } = useProgress()
     const Scene = useRef()
     const Chair = useRef()
     const LetterTMaterial = useRef()
@@ -13,13 +13,14 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
     // Probly should REFACTOR ALL of THIS,
 
     // useEffect(() => {
-    //     if (prog.progress === 100) setHeroModelReady(true);
-    // }, [prog])
+    //     // if (progress === 100) setHeroModelReady(true);
+    //     console.log(progress);
+    // }, [progress])
 
     const neonSignMaterial = useRef()
     useEffect(() => {
         // console.log("3d MODEL LOADED")
-        gsap.registerPlugin(ScrollTrigger);
+  
         const hero = heroRef.current;
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -32,7 +33,7 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
         tl.to(Scene.current.position, { y: '1.25', });
         tl.to(Scene.current.rotation, { z: '0.1', });
 
-        if (prog.progress === 100) {
+        if (progress === 100) {
             setHeroModelReady(true);
             const tlChair = gsap.timeline();
             tlChair.to(Chair.current.rotation, {
@@ -66,7 +67,7 @@ export default function Model({ props, heroRef, setHeroModelReady }) {
                 .to(neonSignMaterial.current, { opacity: '0.5', duration: 0.05, ease: 'steps(3)' })
                 .to(neonSignMaterial.current, { opacity: '1', duration: 0.05, ease: 'steps(3)' });
         }
-    }, [prog])
+    }, [progress])
 
     return (
         <group ref={Scene}>

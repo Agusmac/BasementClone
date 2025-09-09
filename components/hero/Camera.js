@@ -3,6 +3,7 @@ import { PerspectiveCamera } from '@react-three/drei'
 import { useFrame} from '@react-three/fiber';
 
 export default function Camera() {
+    console.log('LOADED CAMERA')
     const camera = useRef();
 
     const sizes = {

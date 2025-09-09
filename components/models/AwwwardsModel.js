@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export function Awwwards({ props, parentDiv, mediumParentDiv }) {
 
@@ -10,7 +11,6 @@ export function Awwwards({ props, parentDiv, mediumParentDiv }) {
 
   useEffect(() => {
     // console.log("Awwward MODEL LOADED")
-    gsap.registerPlugin(ScrollTrigger);
 
     if (window.innerWidth > 1024) {
       const parent = parentDiv.current;
